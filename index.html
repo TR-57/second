@@ -251,13 +251,10 @@
   html[lang="ar"] .erp-hint{letter-spacing:0;}
   .erp-trigger:hover .erp-hint,
   .erp-trigger.active .erp-hint{background:var(--coral); color:var(--black);}
-  .erp-hint svg{width:13px; height:13px; transition:transform .35s;}
-  .erp-trigger.active .erp-hint svg{transform:rotate(180deg);}
+  .erp-hint svg{width:13px; height:13px;}
 
-  /* ---------- ERP SHOWCASE (revealed on click) ---------- */
-  .erp{display:none; padding:34px 24px 120px; max-width:1400px; margin:0 auto;}
-  .erp.open{display:block; animation:erpIn .5s ease both;}
-  @keyframes erpIn{ from{opacity:0; transform:translateY(16px);} to{opacity:1; transform:none;} }
+  /* ---------- ERP SHOWCASE (always visible; trigger scrolls to it) ---------- */
+  .erp{padding:34px 24px 120px; max-width:1400px; margin:0 auto; scroll-margin-top:90px;}
   .erp-inner{
     background:var(--black); color:var(--white);
     border-radius:36px; padding:88px 56px; overflow:hidden;
@@ -431,7 +428,7 @@
         <span data-lang="en">Fast, bilingual, conversion-built sites — from e-commerce storefronts to corporate presences.</span>
       </div>
     </div>
-    <div class="service-row erp-trigger" id="erpTrigger" role="button" tabindex="0" aria-expanded="false" aria-controls="erp">
+    <div class="service-row erp-trigger" id="erpTrigger" role="link" tabindex="0" aria-controls="erp">
       <div class="service-num">02</div>
       <div class="service-title">
         <span class="service-title-main">
@@ -694,17 +691,12 @@
 
     var trigger = document.getElementById('erpTrigger');
     var erp = document.getElementById('erp');
-    function toggleErp(){
-      var open = erp.classList.toggle('open');
-      trigger.classList.toggle('active', open);
-      trigger.setAttribute('aria-expanded', open ? 'true' : 'false');
-      if(open){
-        requestAnimationFrame(function(){ erp.scrollIntoView({behavior:'smooth', block:'start'}); });
-      }
+    function scrollToErp(){
+      erp.scrollIntoView({behavior:'smooth', block:'start'});
     }
-    trigger.addEventListener('click', toggleErp);
+    trigger.addEventListener('click', scrollToErp);
     trigger.addEventListener('keydown', function(e){
-      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); toggleErp(); }
+      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); scrollToErp(); }
     });
 
     var carousel = document.querySelector('.erp-carousel');
