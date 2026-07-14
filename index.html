@@ -1,0 +1,739 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>وصلة — أعمالنا</title>
+<meta name="description" content="معرض أعمال وصلة — مواقع ومتاجر إلكترونية صممناها ونفّذناها لعملائنا.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&family=Cairo:wght@500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0b1220;
+    --bg-2: #101a2e;
+    --card: #131f38;
+    --card-2: #172845;
+    --border: #24345a;
+    --text: #eef2ff;
+    --muted: #a4b0cf;
+    --accent: #f2c14e;
+    --accent-2: #ffd97a;
+    --link: #7cc7ff;
+    --radius: 18px;
+    --shadow: 0 20px 50px rgba(0,0,0,0.35);
+    --shadow-soft: 0 8px 24px rgba(0,0,0,0.25);
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: "Tajawal", "Cairo", "Segoe UI", "Tahoma", system-ui, sans-serif;
+    background: radial-gradient(1200px 700px at 90% -10%, rgba(242,193,78,0.10), transparent 60%),
+                radial-gradient(900px 600px at -10% 20%, rgba(124,199,255,0.10), transparent 60%),
+                var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* Header */
+  header.site {
+    padding: 22px 0;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    backdrop-filter: blur(14px);
+    background: rgba(11,18,32,0.7);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .site-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 900;
+    font-size: 22px;
+  }
+  .brand-mark {
+    width: 42px; height: 42px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--accent), #ff9f45);
+    display: grid; place-items: center;
+    color: #1a1200;
+    font-weight: 900;
+    box-shadow: 0 8px 20px rgba(242,193,78,0.35);
+    font-family: "Cairo", "Tajawal", sans-serif;
+    font-size: 20px;
+  }
+  .brand-name { font-family: "Cairo", "Tajawal", sans-serif; letter-spacing: 0.5px; }
+  .brand-en { color: var(--muted); font-weight: 500; font-size: 13px; margin-inline-start: 8px; }
+
+  nav.top a {
+    color: var(--muted);
+    margin-inline-start: 22px;
+    font-weight: 500;
+    transition: color .2s;
+  }
+  nav.top a:hover { color: var(--text); }
+
+  /* Hero */
+  .hero {
+    padding: 80px 0 40px;
+    text-align: center;
+    position: relative;
+  }
+  .eyebrow {
+    display: inline-block;
+    padding: 6px 14px;
+    border: 1px solid rgba(242,193,78,0.35);
+    color: var(--accent-2);
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 22px;
+    background: rgba(242,193,78,0.06);
+  }
+  .hero h1 {
+    font-family: "Cairo", "Tajawal", sans-serif;
+    font-size: clamp(34px, 5.5vw, 60px);
+    line-height: 1.15;
+    margin: 0 0 18px;
+    font-weight: 900;
+    background: linear-gradient(180deg, #ffffff 0%, #b6c2e2 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .hero p.lead {
+    max-width: 720px;
+    margin: 0 auto;
+    color: var(--muted);
+    font-size: clamp(16px, 1.6vw, 19px);
+  }
+  .hero-cta {
+    margin-top: 28px;
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 13px 22px;
+    border-radius: 12px;
+    font-weight: 700;
+    transition: transform .15s ease, box-shadow .2s;
+    border: 1px solid transparent;
+  }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--accent), #ffb347);
+    color: #1a1200;
+    box-shadow: 0 10px 25px rgba(242,193,78,0.28);
+  }
+  .btn-primary:hover { transform: translateY(-2px); }
+  .btn-ghost {
+    background: transparent;
+    border-color: rgba(255,255,255,0.12);
+    color: var(--text);
+  }
+  .btn-ghost:hover { border-color: rgba(255,255,255,0.28); }
+
+  /* Section title */
+  .section { padding: 60px 0; }
+  .section-head {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+  }
+  .section-head h2 {
+    font-family: "Cairo", "Tajawal", sans-serif;
+    font-size: clamp(26px, 3vw, 36px);
+    margin: 0;
+    font-weight: 900;
+  }
+  .section-head p {
+    margin: 0;
+    color: var(--muted);
+    max-width: 480px;
+  }
+  .divider-accent {
+    display: inline-block;
+    width: 44px; height: 4px;
+    border-radius: 2px;
+    background: var(--accent);
+    margin-bottom: 12px;
+  }
+
+  /* Grid */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0,1fr));
+    gap: 26px;
+  }
+  @media (max-width: 960px) { .grid { grid-template-columns: repeat(2, minmax(0,1fr)); } }
+  @media (max-width: 640px) { .grid { grid-template-columns: 1fr; } }
+
+  /* Card */
+  .card {
+    background: linear-gradient(180deg, var(--card) 0%, var(--card-2) 100%);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-soft);
+    display: flex;
+    flex-direction: column;
+    transition: transform .25s ease, box-shadow .25s ease, border-color .25s;
+    position: relative;
+  }
+  .card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow);
+    border-color: rgba(242,193,78,0.35);
+  }
+  .card-preview {
+    aspect-ratio: 16/10;
+    background: #0f1830;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid var(--border);
+  }
+  .card-preview svg {
+    width: 100%; height: 100%;
+    display: block;
+    transition: transform .5s ease;
+  }
+  .card:hover .card-preview svg { transform: scale(1.03); }
+
+  .card-body {
+    padding: 22px 22px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+  }
+  .card-tag {
+    align-self: flex-start;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: rgba(124,199,255,0.10);
+    color: var(--link);
+    border: 1px solid rgba(124,199,255,0.20);
+  }
+  .card h3 {
+    font-family: "Cairo", "Tajawal", sans-serif;
+    margin: 4px 0 0;
+    font-size: 22px;
+    font-weight: 900;
+  }
+  .card .en {
+    color: var(--muted);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.4px;
+    margin-top: -2px;
+  }
+  .card p.desc {
+    color: var(--muted);
+    margin: 6px 0 0;
+    font-size: 15px;
+    line-height: 1.75;
+  }
+  .card-foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px dashed rgba(255,255,255,0.08);
+  }
+  .visit {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--accent-2);
+    font-weight: 700;
+    font-size: 15px;
+  }
+  .visit svg { width: 16px; height: 16px; }
+  .card:hover .visit { color: #fff; }
+  .site-domain {
+    color: var(--muted);
+    font-size: 13px;
+    direction: ltr;
+    font-family: "SF Mono", Menlo, monospace;
+  }
+
+  /* About */
+  .about {
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0));
+    border-top: 1px solid rgba(255,255,255,0.06);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .about-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  @media (max-width: 800px) { .about-grid { grid-template-columns: 1fr; } }
+  .stat {
+    padding: 26px 22px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    text-align: center;
+  }
+  .stat .num {
+    font-family: "Cairo", "Tajawal", sans-serif;
+    font-size: 40px;
+    font-weight: 900;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .stat .lbl { color: var(--muted); margin-top: 8px; font-weight: 500; }
+
+  /* CTA */
+  .cta {
+    text-align: center;
+    padding: 80px 24px;
+  }
+  .cta h2 {
+    font-family: "Cairo", "Tajawal", sans-serif;
+    font-size: clamp(28px, 3.4vw, 40px);
+    margin: 0 0 10px;
+  }
+  .cta p { color: var(--muted); margin: 0 0 22px; }
+
+  /* Footer */
+  footer.site {
+    padding: 40px 0 30px;
+    color: var(--muted);
+    font-size: 14px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .foot-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  /* Accessibility */
+  a:focus-visible, .btn:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 10px;
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="container site-inner">
+    <a class="brand" href="#top" aria-label="وصلة">
+      <span class="brand-mark">و</span>
+      <span>
+        <span class="brand-name">وصلة</span><span class="brand-en">WASLA</span>
+      </span>
+    </a>
+    <nav class="top" aria-label="التنقل">
+      <a href="#projects">أعمالنا</a>
+      <a href="#about">من نحن</a>
+      <a href="#contact">تواصل</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero container">
+    <span class="eyebrow">معرض الأعمال · Portfolio</span>
+    <h1>نصنع مواقع تُوصِل علامتك التجارية بعملائها</h1>
+    <p class="lead">
+      في <strong>وصلة</strong> نصمم ونطوّر متاجر ومواقع إلكترونية بهوية بصرية مميّزة
+      وتجربة استخدام سلسة، بحيث يجد عميلك ما يبحث عنه بسهولة وثقة.
+    </p>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="#projects">استعرض أعمالنا
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+      </a>
+      <a class="btn btn-ghost" href="#contact">تواصل معنا</a>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <span class="divider-accent"></span>
+          <h2>أعمالنا الأخيرة</h2>
+        </div>
+        <p>مجموعة مختارة من المواقع والمتاجر التي نفّذناها لعملائنا. اضغط على أي مشروع لزيارة الموقع.</p>
+      </div>
+
+      <div class="grid">
+
+        <!-- Project 1: Kimi page -->
+        <a class="card" href="https://4atlbbowd5g4c.kimi.page?sharetype=link" target="_blank" rel="noopener" aria-label="زيارة موقع المشروع الأول">
+          <div class="card-preview">
+            <svg viewBox="0 0 640 400" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#1e2a4a"/>
+                  <stop offset="1" stop-color="#0d1428"/>
+                </linearGradient>
+                <linearGradient id="g1b" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0" stop-color="#7cc7ff"/>
+                  <stop offset="1" stop-color="#a56cff"/>
+                </linearGradient>
+              </defs>
+              <rect width="640" height="400" fill="url(#g1)"/>
+              <!-- browser chrome -->
+              <rect x="0" y="0" width="640" height="34" fill="#0a0f1e"/>
+              <circle cx="18" cy="17" r="5" fill="#ff5f57"/>
+              <circle cx="36" cy="17" r="5" fill="#febc2e"/>
+              <circle cx="54" cy="17" r="5" fill="#28c840"/>
+              <rect x="90" y="8" width="460" height="18" rx="6" fill="#1a2340"/>
+              <!-- content -->
+              <circle cx="320" cy="150" r="60" fill="none" stroke="url(#g1b)" stroke-width="3" opacity="0.7"/>
+              <circle cx="320" cy="150" r="90" fill="none" stroke="url(#g1b)" stroke-width="2" opacity="0.4"/>
+              <text x="320" y="160" text-anchor="middle" fill="#eef2ff" font-family="Cairo, Tajawal, sans-serif" font-size="30" font-weight="900">Landing</text>
+              <rect x="140" y="240" width="360" height="10" rx="5" fill="#2a3a66"/>
+              <rect x="180" y="260" width="280" height="10" rx="5" fill="#22335f"/>
+              <rect x="240" y="300" width="160" height="34" rx="17" fill="url(#g1b)"/>
+              <text x="320" y="322" text-anchor="middle" fill="#0b1220" font-family="Tajawal, sans-serif" font-size="14" font-weight="700">Get Started</text>
+            </svg>
+          </div>
+          <div class="card-body">
+            <span class="card-tag">صفحة هبوط · Landing Page</span>
+            <h3>صفحة هبوط تفاعلية</h3>
+            <span class="en">Interactive Landing Page</span>
+            <p class="desc">
+              صفحة هبوط عصرية مبنية بأسلوب حديث، تركّز على تقديم رسالة واضحة ودعوة قوية لاتخاذ الإجراء،
+              مع تصميم بصري أنيق ومناسب لجميع الأجهزة.
+            </p>
+            <div class="card-foot">
+              <span class="visit">
+                زيارة الموقع
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+              </span>
+              <span class="site-domain">kimi.page</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Project 2: Keepers Save Store -->
+        <a class="card" href="https://keeperssavestore.com/shop/" target="_blank" rel="noopener" aria-label="زيارة متجر Keepers Save Store">
+          <div class="card-preview">
+            <svg viewBox="0 0 640 400" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="g2" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#0f2942"/>
+                  <stop offset="1" stop-color="#0a1a2b"/>
+                </linearGradient>
+              </defs>
+              <rect width="640" height="400" fill="url(#g2)"/>
+              <rect x="0" y="0" width="640" height="34" fill="#08131f"/>
+              <circle cx="18" cy="17" r="5" fill="#ff5f57"/>
+              <circle cx="36" cy="17" r="5" fill="#febc2e"/>
+              <circle cx="54" cy="17" r="5" fill="#28c840"/>
+              <rect x="90" y="8" width="460" height="18" rx="6" fill="#132436"/>
+              <!-- top bar -->
+              <rect x="0" y="34" width="640" height="42" fill="#0c1e33"/>
+              <text x="40" y="61" fill="#7cc7ff" font-family="Cairo, sans-serif" font-size="18" font-weight="900">Keepers Save Store</text>
+              <rect x="440" y="46" width="60" height="18" rx="4" fill="#12314e"/>
+              <rect x="510" y="46" width="60" height="18" rx="4" fill="#12314e"/>
+              <!-- product grid -->
+              <g>
+                <rect x="40"  y="100" width="170" height="130" rx="10" fill="#12253b"/>
+                <rect x="230" y="100" width="170" height="130" rx="10" fill="#12253b"/>
+                <rect x="420" y="100" width="170" height="130" rx="10" fill="#12253b"/>
+                <circle cx="125" cy="160" r="30" fill="#1c3958"/>
+                <circle cx="315" cy="160" r="30" fill="#1c3958"/>
+                <circle cx="505" cy="160" r="30" fill="#1c3958"/>
+                <rect x="60"  y="205" width="130" height="8" rx="4" fill="#2a4468"/>
+                <rect x="250" y="205" width="130" height="8" rx="4" fill="#2a4468"/>
+                <rect x="440" y="205" width="130" height="8" rx="4" fill="#2a4468"/>
+
+                <rect x="40"  y="250" width="170" height="130" rx="10" fill="#12253b"/>
+                <rect x="230" y="250" width="170" height="130" rx="10" fill="#12253b"/>
+                <rect x="420" y="250" width="170" height="130" rx="10" fill="#12253b"/>
+                <circle cx="125" cy="310" r="30" fill="#1c3958"/>
+                <circle cx="315" cy="310" r="30" fill="#1c3958"/>
+                <circle cx="505" cy="310" r="30" fill="#1c3958"/>
+              </g>
+            </svg>
+          </div>
+          <div class="card-body">
+            <span class="card-tag">متجر إلكتروني · E‑commerce</span>
+            <h3>متجر Keepers Save</h3>
+            <span class="en">Keepers Save Store</span>
+            <p class="desc">
+              متجر إلكتروني متكامل يعرض تشكيلة واسعة من المنتجات بتصميم مرتّب وسهل التصفح،
+              مع تجربة شراء سلسة تدعم عمليات البحث والتصفية وإتمام الطلب بسرعة.
+            </p>
+            <div class="card-foot">
+              <span class="visit">
+                زيارة المتجر
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+              </span>
+              <span class="site-domain">keeperssavestore.com</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Project 3: Casabilla -->
+        <a class="card" href="https://casabilla.com/" target="_blank" rel="noopener" aria-label="زيارة موقع Casabilla">
+          <div class="card-preview">
+            <svg viewBox="0 0 640 400" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="g3" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#f6efe4"/>
+                  <stop offset="1" stop-color="#e8dcc6"/>
+                </linearGradient>
+                <linearGradient id="g3b" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#3d2a1a"/>
+                  <stop offset="1" stop-color="#1e120a"/>
+                </linearGradient>
+              </defs>
+              <rect width="640" height="400" fill="url(#g3)"/>
+              <rect x="0" y="0" width="640" height="34" fill="#c9b895"/>
+              <circle cx="18" cy="17" r="5" fill="#ff5f57"/>
+              <circle cx="36" cy="17" r="5" fill="#febc2e"/>
+              <circle cx="54" cy="17" r="5" fill="#28c840"/>
+              <rect x="90" y="8" width="460" height="18" rx="6" fill="#d8c9a5"/>
+              <!-- header -->
+              <text x="320" y="90" text-anchor="middle" fill="#3d2a1a" font-family="Cairo, serif" font-size="34" font-weight="900" letter-spacing="6">CASABILLA</text>
+              <line x1="240" y1="105" x2="400" y2="105" stroke="#a1876a" stroke-width="1.5"/>
+              <text x="320" y="130" text-anchor="middle" fill="#7a5f3f" font-family="Tajawal, sans-serif" font-size="13" letter-spacing="4">HOME · LIFESTYLE</text>
+              <!-- hero card -->
+              <rect x="60" y="160" width="240" height="200" rx="12" fill="url(#g3b)"/>
+              <text x="180" y="240" text-anchor="middle" fill="#f6efe4" font-family="Cairo, sans-serif" font-size="22" font-weight="900">أناقة</text>
+              <text x="180" y="270" text-anchor="middle" fill="#e8dcc6" font-family="Tajawal, sans-serif" font-size="13">elegant living</text>
+              <rect x="140" y="300" width="80" height="26" rx="13" fill="#f6efe4"/>
+              <text x="180" y="317" text-anchor="middle" fill="#3d2a1a" font-family="Tajawal, sans-serif" font-size="12" font-weight="700">SHOP</text>
+              <!-- side cards -->
+              <rect x="320" y="160" width="130" height="95" rx="10" fill="#d8c9a5"/>
+              <rect x="470" y="160" width="120" height="95" rx="10" fill="#c9b895"/>
+              <rect x="320" y="265" width="270" height="95" rx="10" fill="#e0d1b1"/>
+            </svg>
+          </div>
+          <div class="card-body">
+            <span class="card-tag">علامة تجارية · Lifestyle Brand</span>
+            <h3>كازابيلا</h3>
+            <span class="en">Casabilla</span>
+            <p class="desc">
+              موقع لعلامة تجارية بطابع راقٍ وهادئ، يعكس هوية بصرية دافئة تعتمد على الألوان الترابية
+              والتصوير الأنيق لتقديم منتجات المنزل ونمط الحياة بأسلوب مميّز.
+            </p>
+            <div class="card-foot">
+              <span class="visit">
+                زيارة الموقع
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+              </span>
+              <span class="site-domain">casabilla.com</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Project 4: Sniper Shopping -->
+        <a class="card" href="https://snipershopping.com" target="_blank" rel="noopener" aria-label="زيارة موقع Sniper Shopping">
+          <div class="card-preview">
+            <svg viewBox="0 0 640 400" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="g4" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#111827"/>
+                  <stop offset="1" stop-color="#000000"/>
+                </linearGradient>
+                <linearGradient id="g4b" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0" stop-color="#ff3b3b"/>
+                  <stop offset="1" stop-color="#ff8a3b"/>
+                </linearGradient>
+              </defs>
+              <rect width="640" height="400" fill="url(#g4)"/>
+              <rect x="0" y="0" width="640" height="34" fill="#000"/>
+              <circle cx="18" cy="17" r="5" fill="#ff5f57"/>
+              <circle cx="36" cy="17" r="5" fill="#febc2e"/>
+              <circle cx="54" cy="17" r="5" fill="#28c840"/>
+              <rect x="90" y="8" width="460" height="18" rx="6" fill="#111"/>
+              <!-- nav -->
+              <rect x="0" y="34" width="640" height="46" fill="#0a0f1a"/>
+              <text x="40" y="63" fill="#fff" font-family="Cairo, sans-serif" font-size="20" font-weight="900">SNIPER</text>
+              <text x="128" y="63" fill="#ff6b3b" font-family="Cairo, sans-serif" font-size="20" font-weight="900">SHOP</text>
+              <!-- hero banner -->
+              <rect x="30" y="100" width="580" height="150" rx="14" fill="#1a2436"/>
+              <circle cx="130" cy="175" r="55" fill="none" stroke="url(#g4b)" stroke-width="4"/>
+              <circle cx="130" cy="175" r="35" fill="none" stroke="url(#g4b)" stroke-width="3"/>
+              <line x1="80" y1="175" x2="180" y2="175" stroke="url(#g4b)" stroke-width="2"/>
+              <line x1="130" y1="125" x2="130" y2="225" stroke="url(#g4b)" stroke-width="2"/>
+              <text x="220" y="160" fill="#fff" font-family="Cairo, sans-serif" font-size="22" font-weight="900">HOT DEALS</text>
+              <text x="220" y="190" fill="#a4b0cf" font-family="Tajawal, sans-serif" font-size="14">أفضل العروض · Best Prices</text>
+              <rect x="220" y="205" width="100" height="30" rx="15" fill="url(#g4b)"/>
+              <text x="270" y="225" text-anchor="middle" fill="#fff" font-family="Tajawal, sans-serif" font-size="13" font-weight="800">SHOP NOW</text>
+              <!-- product row -->
+              <rect x="30"  y="270" width="140" height="110" rx="10" fill="#1a2436"/>
+              <rect x="180" y="270" width="140" height="110" rx="10" fill="#1a2436"/>
+              <rect x="330" y="270" width="140" height="110" rx="10" fill="#1a2436"/>
+              <rect x="480" y="270" width="130" height="110" rx="10" fill="#1a2436"/>
+            </svg>
+          </div>
+          <div class="card-body">
+            <span class="card-tag">متجر إلكتروني · E‑commerce</span>
+            <h3>سنايبر شوبينج</h3>
+            <span class="en">Sniper Shopping</span>
+            <p class="desc">
+              متجر إلكتروني بطابع جريء وشبابي، يعتمد على تباين لوني قوي بين الأسود والأحمر لإبراز
+              العروض والتخفيضات، مع واجهة تركّز على سرعة الوصول للمنتج والشراء.
+            </p>
+            <div class="card-foot">
+              <span class="visit">
+                زيارة المتجر
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+              </span>
+              <span class="site-domain">snipershopping.com</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Project 5: Tartebz -->
+        <a class="card" href="https://tartebz.shop" target="_blank" rel="noopener" aria-label="زيارة متجر ترتبز">
+          <div class="card-preview">
+            <svg viewBox="0 0 640 400" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="g5" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#fef7f0"/>
+                  <stop offset="1" stop-color="#fbe6d0"/>
+                </linearGradient>
+                <linearGradient id="g5b" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#c66a2b"/>
+                  <stop offset="1" stop-color="#a04a15"/>
+                </linearGradient>
+              </defs>
+              <rect width="640" height="400" fill="url(#g5)"/>
+              <rect x="0" y="0" width="640" height="34" fill="#f4dfc4"/>
+              <circle cx="18" cy="17" r="5" fill="#ff5f57"/>
+              <circle cx="36" cy="17" r="5" fill="#febc2e"/>
+              <circle cx="54" cy="17" r="5" fill="#28c840"/>
+              <rect x="90" y="8" width="460" height="18" rx="6" fill="#eacca4"/>
+              <!-- brand -->
+              <text x="40" y="80" fill="#7a3a10" font-family="Cairo, sans-serif" font-size="28" font-weight="900">تَرتِبز</text>
+              <text x="40" y="102" fill="#a05a25" font-family="Tajawal, sans-serif" font-size="13" letter-spacing="4">TARTEBZ.SHOP</text>
+              <rect x="520" y="60" width="80" height="34" rx="17" fill="url(#g5b)"/>
+              <text x="560" y="82" text-anchor="middle" fill="#fff" font-family="Tajawal, sans-serif" font-size="13" font-weight="700">تسوق</text>
+              <!-- hero image -->
+              <rect x="40"  y="130" width="270" height="230" rx="16" fill="url(#g5b)"/>
+              <text x="175" y="230" text-anchor="middle" fill="#fef7f0" font-family="Cairo, sans-serif" font-size="26" font-weight="900">تشكيلة</text>
+              <text x="175" y="262" text-anchor="middle" fill="#fef7f0" font-family="Cairo, sans-serif" font-size="26" font-weight="900">جديدة</text>
+              <text x="175" y="298" text-anchor="middle" fill="#fbe6d0" font-family="Tajawal, sans-serif" font-size="13">اكتشف الآن</text>
+              <!-- product grid -->
+              <rect x="330" y="130" width="130" height="110" rx="12" fill="#f4dfc4"/>
+              <circle cx="395" cy="180" r="28" fill="#eacca4"/>
+              <rect x="480" y="130" width="120" height="110" rx="12" fill="#eacca4"/>
+              <circle cx="540" cy="180" r="28" fill="#dcb587"/>
+              <rect x="330" y="250" width="270" height="110" rx="12" fill="#f4dfc4"/>
+              <rect x="350" y="270" width="70" height="70" rx="10" fill="#eacca4"/>
+              <rect x="440" y="270" width="150" height="14" rx="7" fill="#dcb587"/>
+              <rect x="440" y="295" width="120" height="10" rx="5" fill="#e8c9a0"/>
+              <rect x="440" y="325" width="80" height="20" rx="10" fill="url(#g5b)"/>
+            </svg>
+          </div>
+          <div class="card-body">
+            <span class="card-tag">متجر إلكتروني · E‑commerce</span>
+            <h3>ترتبز</h3>
+            <span class="en">Tartebz Shop</span>
+            <p class="desc">
+              متجر إلكتروني بهوية عربية دافئة، يجمع بين البساطة والذوق الرفيع لعرض المنتجات
+              بطريقة جذّابة، مع تجربة تسوّق سهلة تناسب الزائر العربي على جميع الأجهزة.
+            </p>
+            <div class="card-foot">
+              <span class="visit">
+                زيارة المتجر
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+              </span>
+              <span class="site-domain">tartebz.shop</span>
+            </div>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="section about">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <span class="divider-accent"></span>
+          <h2>من نحن</h2>
+        </div>
+        <p>وصلة فريق متخصّص في تصميم وتطوير المواقع والمتاجر الإلكترونية، نؤمن بأن الموقع الجيّد هو الجسر بين العميل والعلامة التجارية.</p>
+      </div>
+
+      <div class="about-grid">
+        <div class="stat">
+          <div class="num">+5</div>
+          <div class="lbl">مشاريع منجزة</div>
+        </div>
+        <div class="stat">
+          <div class="num">100٪</div>
+          <div class="lbl">التزام بالجودة</div>
+        </div>
+        <div class="stat">
+          <div class="num">24/7</div>
+          <div class="lbl">دعم ومتابعة</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="contact" class="cta container">
+    <span class="divider-accent"></span>
+    <h2>عندك فكرة مشروع؟ خلّينا نبدأ سوا</h2>
+    <p>تواصل معنا لنساعدك في بناء موقعك أو متجرك الإلكتروني بأفضل شكل ممكن.</p>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="mailto:hello@wasla.example">راسلنا الآن</a>
+      <a class="btn btn-ghost" href="#projects">شاهد الأعمال</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site">
+  <div class="container foot-inner">
+    <div>© <span id="yr"></span> <strong>وصلة · WASLA</strong> — جميع الحقوق محفوظة</div>
+    <div>صُنِع بـ ♥ للعملاء المميّزين</div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
