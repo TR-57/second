@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Tajawal:wght@400;500;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Arabic:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
   :root{
     --black:#0B0E11;
@@ -14,8 +14,10 @@
     --coral:#FF4B3E;
     --gray:#6b6f76;
     --line:rgba(11,14,17,0.12);
-    --font-en:'Space Grotesk', sans-serif;
-    --font-ar:'Tajawal', sans-serif;
+    --font-en:'Inter', sans-serif;
+    --font-ar:'Inter', 'Noto Sans Arabic', sans-serif;
+    --font-head-en:'Oswald', sans-serif;
+    --font-head-ar:'Noto Sans Arabic', 'Oswald', sans-serif;
   }
   *{margin:0;padding:0;box-sizing:border-box;}
   html{scroll-behavior:smooth;}
@@ -27,7 +29,40 @@
   }
   /* language font swap */
   html[lang="ar"] body{font-family:var(--font-ar);}
-  .arabic{font-family:'Lalezar', sans-serif;}
+  .arabic{font-family:'Noto Sans Arabic', sans-serif; font-weight:900;}
+
+  /* ---------- DISPLAY FONT (Oswald / Noto Sans Arabic) ----------
+     Applied to headings, brand text, buttons and small uppercase labels. */
+  .nav-mark span, .nav-cta, .lang-switch,
+  .hero h1, .eyebrow, .btn-primary, .btn-ghost,
+  .marquee-track span,
+  .section-head h2, .service-title, .service-num,
+  .work-card h3, .work-card .tag,
+  .erp h2, .erp-sub, .feat h3, .erp-hint,
+  .contact h2, .contact-btn,
+  footer {
+    font-family: var(--font-head-en);
+  }
+  html[lang="ar"] .nav-mark span,
+  html[lang="ar"] .nav-cta,
+  html[lang="ar"] .hero h1,
+  html[lang="ar"] .eyebrow,
+  html[lang="ar"] .btn-primary,
+  html[lang="ar"] .btn-ghost,
+  html[lang="ar"] .marquee-track span,
+  html[lang="ar"] .section-head h2,
+  html[lang="ar"] .service-title,
+  html[lang="ar"] .work-card h3,
+  html[lang="ar"] .work-card .tag,
+  html[lang="ar"] .erp h2,
+  html[lang="ar"] .erp-sub,
+  html[lang="ar"] .feat h3,
+  html[lang="ar"] .erp-hint,
+  html[lang="ar"] .contact h2,
+  html[lang="ar"] .contact-btn,
+  html[lang="ar"] footer {
+    font-family: var(--font-head-ar);
+  }
 
   /* language toggling: show only the active language */
   span[data-lang]{display:none;}
@@ -210,10 +245,10 @@
     display:inline-flex; align-items:center; gap:8px;
     font-size:12px; letter-spacing:1.5px; color:var(--coral);
     border:1px solid rgba(255,75,62,0.4); border-radius:100px; padding:6px 15px;
-    font-family:var(--font-en); font-weight:500; white-space:nowrap;
+    font-weight:500; white-space:nowrap;
     transition:background .25s, color .25s;
   }
-  html[lang="ar"] .erp-hint{font-family:var(--font-ar); letter-spacing:0;}
+  html[lang="ar"] .erp-hint{letter-spacing:0;}
   .erp-trigger:hover .erp-hint,
   .erp-trigger.active .erp-hint{background:var(--coral); color:var(--black);}
   .erp-hint svg{width:13px; height:13px; transition:transform .35s;}
