@@ -1,738 +1,725 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>وصلة — أعمالنا</title>
-<meta name="description" content="معرض أعمال وصلة — مواقع ومتاجر إلكترونية صممناها ونفّذناها لعملائنا.">
+<meta charset="UTF-8">
+<title>وصلة — نربط الأعمال بالتقنية</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&family=Cairo:wght@500;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Tajawal:wght@400;500;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg: #0b1220;
-    --bg-2: #101a2e;
-    --card: #131f38;
-    --card-2: #172845;
-    --border: #24345a;
-    --text: #eef2ff;
-    --muted: #a4b0cf;
-    --accent: #f2c14e;
-    --accent-2: #ffd97a;
-    --link: #7cc7ff;
-    --radius: 18px;
-    --shadow: 0 20px 50px rgba(0,0,0,0.35);
-    --shadow-soft: 0 8px 24px rgba(0,0,0,0.25);
+  :root{
+    --black:#0B0E11;
+    --white:#EDE9E2;
+    --coral:#FF4B3E;
+    --gray:#6b6f76;
+    --line:rgba(11,14,17,0.12);
+    --font-en:'Space Grotesk', sans-serif;
+    --font-ar:'Tajawal', sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--white);
+    color:var(--black);
+    font-family:var(--font-en);
+    overflow-x:hidden;
+  }
+  /* language font swap */
+  html[lang="ar"] body{font-family:var(--font-ar);}
+  .arabic{font-family:'Lalezar', sans-serif;}
+
+  /* language toggling: show only the active language */
+  span[data-lang]{display:none;}
+  html[lang="en"] span[data-lang="en"]{display:inline;}
+  html[lang="ar"] span[data-lang="ar"]{display:inline;}
+  [data-lang]:not(span){display:none;}
+  html[lang="en"] [data-lang="en"]:not(span){display:revert;}
+  html[lang="ar"] [data-lang="ar"]:not(span){display:revert;}
+
+  /* Arabic gets a touch more line-height where it helps */
+  html[lang="ar"] .hero h1{letter-spacing:0; line-height:1.15;}
+  html[lang="ar"] .hero p.sub{line-height:1.9;}
+  html[lang="ar"] .section-head h2{letter-spacing:0; line-height:1.3;}
+  html[lang="ar"] .service-desc{line-height:1.9;}
+  html[lang="ar"] .contact h2{letter-spacing:0;}
+  html[lang="ar"] .nav-mark span,
+  html[lang="ar"] .eyebrow,
+  html[lang="ar"] .marquee-track span,
+  html[lang="ar"] .work-card .tag{letter-spacing:1px;}
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:22px 56px;
+    background:rgba(237,233,226,0.75);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-mark{display:flex; align-items:center; gap:12px;}
+  .nav-mark svg{width:34px; height:34px;}
+  .nav-mark span{font-weight:600; letter-spacing:3px; font-size:15px;}
+  .nav-links{display:flex; gap:40px; list-style:none;}
+  .nav-links a{color:var(--black); text-decoration:none; font-size:14px; letter-spacing:1px; opacity:0.75; transition:opacity .2s;}
+  .nav-links a:hover{opacity:1;}
+  .nav-right{display:flex; align-items:center; gap:20px;}
+  .lang-switch{
+    display:flex; align-items:center; gap:7px; cursor:pointer;
+    border:1px solid var(--line); background:transparent; color:var(--black);
+    padding:8px 16px; border-radius:100px; font-size:13px; letter-spacing:1px;
+    font-family:inherit; transition:border-color .25s, background .25s;
+  }
+  .lang-switch:hover{border-color:var(--coral);}
+  .lang-switch .globe{width:15px; height:15px;}
+  .nav-cta{
+    border:1px solid var(--black); color:var(--black); text-decoration:none;
+    padding:10px 22px; border-radius:100px; font-size:13px; letter-spacing:1px;
+    transition:background .25s, color .25s, border-color .25s; white-space:nowrap;
+  }
+  .nav-cta:hover{background:var(--coral); border-color:var(--coral); color:var(--black);}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    min-height:100vh; display:flex; align-items:center;
+    padding:160px 56px 100px;
+    position:relative;
+  }
+  .hero-grid{
+    display:grid; grid-template-columns:1.15fr 0.85fr; gap:40px; width:100%; align-items:center;
+  }
+  .eyebrow{
+    font-size:13px; letter-spacing:4px; color:var(--coral); margin-bottom:28px; display:block;
+  }
+  .hero h1{
+    font-size:clamp(38px, 5.4vw, 76px); line-height:1.05; font-weight:700; letter-spacing:-1.5px;
+  }
+  .hero h1 .hl{color:var(--coral); font-style:italic;}
+  html[lang="ar"] .hero h1 .hl{font-style:normal;}
+  .hero p.sub{
+    margin-top:28px; max-width:480px; font-size:18px; line-height:1.6; color:var(--gray);
+  }
+  .hero-cta{margin-top:44px; display:flex; gap:18px;}
+  .btn-primary{
+    background:var(--coral); color:var(--black); text-decoration:none; font-weight:600;
+    padding:16px 30px; border-radius:100px; font-size:14px; letter-spacing:.5px;
+    transition:transform .2s;
+  }
+  .btn-primary:hover{transform:translateY(-3px);}
+  .btn-ghost{
+    border:1px solid var(--line); color:var(--black); text-decoration:none;
+    padding:16px 30px; border-radius:100px; font-size:14px; letter-spacing:.5px;
   }
 
-  * { box-sizing: border-box; }
-  html, body { margin: 0; padding: 0; }
-  body {
-    font-family: "Tajawal", "Cairo", "Segoe UI", "Tahoma", system-ui, sans-serif;
-    background: radial-gradient(1200px 700px at 90% -10%, rgba(242,193,78,0.10), transparent 60%),
-                radial-gradient(900px 600px at -10% 20%, rgba(124,199,255,0.10), transparent 60%),
-                var(--bg);
-    color: var(--text);
-    line-height: 1.7;
-    min-height: 100vh;
-    -webkit-font-smoothing: antialiased;
+  .hero-mark{
+    position:relative; display:flex; flex-direction:column; align-items:center; justify-content:center;
+  }
+  .hero-mark .arabic{
+    font-size:220px; color:transparent; -webkit-text-stroke:1.5px rgba(11,14,17,0.35);
+    transform:rotate(-6deg); user-select:none; line-height:1;
+  }
+  .hero-mark svg{position:absolute; width:120px; height:120px; top:calc(50% - 60px); left:calc(50% - 60px); animation:pulse 3.4s ease-in-out infinite;}
+  @keyframes pulse{ 0%,100%{transform:scale(1);} 50%{transform:scale(1.06);} }
+
+  /* ---------- MARQUEE DIVIDER ---------- */
+  .marquee{
+    border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+    padding:22px 0; overflow:hidden; white-space:nowrap;
+  }
+  .marquee-track{display:inline-flex; gap:60px; animation:scroll 22s linear infinite;}
+  .marquee-track span{font-size:15px; letter-spacing:3px; color:var(--gray); display:flex; align-items:center; gap:14px;}
+  .marquee-track span .dot{width:6px; height:6px; border-radius:50%; background:var(--coral); display:inline-block;}
+  @keyframes scroll{ from{transform:translateX(0);} to{transform:translateX(-50%);} }
+
+  /* ---------- SERVICES ---------- */
+  .services{padding:150px 56px; max-width:1400px; margin:0 auto;}
+  .section-head{display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:70px; gap:30px; flex-wrap:wrap;}
+  .section-head h2{font-size:clamp(28px,3vw,44px); font-weight:700; letter-spacing:-1px; max-width:520px;}
+  .section-head p{color:var(--gray); max-width:340px; font-size:15px; line-height:1.6;}
+
+  .service-list{display:flex; flex-direction:column;}
+  .service-row{
+    display:grid; grid-template-columns:80px 1fr 1fr; gap:30px; align-items:center;
+    padding:38px 0; border-top:1px solid var(--line);
+    transition:padding .3s;
+  }
+  .service-row:last-child{border-bottom:1px solid var(--line);}
+  html[dir="ltr"] .service-row:hover{padding-left:16px;}
+  html[dir="rtl"] .service-row:hover{padding-right:16px;}
+  .service-num{font-size:14px; color:var(--gray); letter-spacing:1px;}
+  .service-title{font-size:clamp(22px,2.6vw,34px); font-weight:600;}
+  .service-title .accent{color:var(--coral);}
+  .service-desc{color:var(--gray); font-size:15px; line-height:1.6; max-width:440px;}
+
+  /* ---------- WORK ---------- */
+  .work{padding:0 56px 150px; max-width:1400px; margin:0 auto;}
+  .work-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:24px;}
+  .work-card{
+    background:#E3DDD2; border-radius:20px; overflow:hidden;
+    display:flex; flex-direction:column;
+    border:1px solid var(--line); transition:border-color .25s, transform .25s, box-shadow .25s;
+    text-decoration:none; color:inherit;
+  }
+  .work-card:hover{border-color:var(--coral); transform:translateY(-6px); box-shadow:0 20px 42px rgba(11,14,17,0.12);}
+  .work-thumb{aspect-ratio:16/10; overflow:hidden; background:#d6d0c4; border-bottom:1px solid var(--line);}
+  .work-thumb img{width:100%; height:100%; object-fit:cover; object-position:top center; display:block; transition:transform .5s ease;}
+  .work-card:hover .work-thumb img{transform:scale(1.05);}
+  .work-body{padding:26px 28px 24px; display:flex; flex-direction:column; flex:1;}
+  .work-card .tag{font-size:12px; letter-spacing:2px; color:var(--coral);}
+  .work-card h3{font-size:23px; font-weight:600; margin-top:12px;}
+  .work-card p{color:var(--gray); font-size:14px; margin-top:10px; line-height:1.6; flex:1;}
+  .work-card .arrow{margin-top:20px; align-self:flex-end; font-size:22px; color:var(--black);}
+  html[dir="rtl"] .work-card .arrow{transform:scaleX(-1);}
+
+  /* ---------- MANIFESTO ---------- */
+  .manifesto{
+    padding:140px 56px; text-align:center; max-width:1000px; margin:0 auto;
+  }
+  .manifesto p{
+    font-size:clamp(24px,3.6vw,42px); line-height:1.4; font-weight:500; letter-spacing:-.5px;
+  }
+  html[lang="ar"] .manifesto p{line-height:1.6;}
+  .manifesto p .arabic{color:var(--coral); font-size:1.15em;}
+
+  /* ---------- CONTACT ---------- */
+  .contact{
+    background:var(--coral); color:var(--black); border-radius:36px;
+    margin:0 24px 24px; padding:110px 56px; text-align:center;
+  }
+  .contact h2{font-size:clamp(34px,6vw,84px); font-weight:700; letter-spacing:-2px;}
+  .contact p{margin-top:20px; font-size:17px; opacity:.8;}
+  .contact-actions{margin-top:44px; display:flex; gap:16px; justify-content:center; align-items:center; flex-wrap:wrap;}
+  .contact-btn{
+    display:inline-flex; align-items:center; gap:11px; background:var(--black); color:var(--white);
+    text-decoration:none; padding:16px 32px; border-radius:100px; font-weight:600; font-size:15px; letter-spacing:.5px;
+    transition:transform .2s, background .2s, color .2s;
+  }
+  .contact-btn:hover{transform:translateY(-3px);}
+  .contact-wa{background:transparent; color:var(--black); border:1px solid rgba(11,14,17,0.4);}
+  .contact-wa:hover{background:var(--black); color:var(--white);}
+  .wa-ic{width:20px; height:20px; display:block;}
+
+  footer{
+    display:flex; justify-content:space-between; padding:40px 80px 60px; color:var(--gray); font-size:13px; letter-spacing:1px;
   }
 
-  a { color: inherit; text-decoration: none; }
+  /* ---------- ERP TRIGGER (service card 02) ---------- */
+  .service-row.erp-trigger{cursor:pointer;}
+  .erp-trigger .service-title{display:flex; flex-direction:column; align-items:flex-start; gap:14px;}
+  .erp-hint{
+    display:inline-flex; align-items:center; gap:8px;
+    font-size:12px; letter-spacing:1.5px; color:var(--coral);
+    border:1px solid rgba(255,75,62,0.4); border-radius:100px; padding:6px 15px;
+    font-family:var(--font-en); font-weight:500; white-space:nowrap;
+    transition:background .25s, color .25s;
+  }
+  html[lang="ar"] .erp-hint{font-family:var(--font-ar); letter-spacing:0;}
+  .erp-trigger:hover .erp-hint,
+  .erp-trigger.active .erp-hint{background:var(--coral); color:var(--black);}
+  .erp-hint svg{width:13px; height:13px; transition:transform .35s;}
+  .erp-trigger.active .erp-hint svg{transform:rotate(180deg);}
 
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 24px;
+  /* ---------- ERP SHOWCASE (revealed on click) ---------- */
+  .erp{display:none; padding:34px 24px 120px; max-width:1400px; margin:0 auto;}
+  .erp.open{display:block; animation:erpIn .5s ease both;}
+  @keyframes erpIn{ from{opacity:0; transform:translateY(16px);} to{opacity:1; transform:none;} }
+  .erp-inner{
+    background:var(--black); color:var(--white);
+    border-radius:36px; padding:88px 56px; overflow:hidden;
   }
+  .erp-head{max-width:780px; margin-bottom:52px;}
+  .erp-head .eyebrow{margin-bottom:18px;}
+  .erp h2{font-size:clamp(30px,4vw,54px); font-weight:700; letter-spacing:-1.5px; line-height:1.05;}
+  .erp h2 .accent{color:var(--coral);}
+  html[lang="ar"] .erp h2{letter-spacing:0; line-height:1.3;}
+  .erp-lead{margin-top:24px; font-size:18px; line-height:1.7; color:rgba(237,233,226,0.7); max-width:700px;}
+  html[lang="ar"] .erp-lead{line-height:2;}
 
-  /* Header */
-  header.site {
-    padding: 22px 0;
-    position: sticky;
-    top: 0;
-    z-index: 20;
-    backdrop-filter: blur(14px);
-    background: rgba(11,18,32,0.7);
-    border-bottom: 1px solid rgba(255,255,255,0.06);
+  .erp-shots{margin-bottom:66px;}
+  .erp-shot{
+    background:#14181d; border:1px solid rgba(237,233,226,0.14);
+    border-radius:16px; overflow:hidden; box-shadow:0 30px 60px rgba(0,0,0,0.35);
   }
-  .site-inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-  }
-  .brand {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-weight: 900;
-    font-size: 22px;
-  }
-  .brand-mark {
-    width: 42px; height: 42px;
-    border-radius: 12px;
-    background: linear-gradient(135deg, var(--accent), #ff9f45);
-    display: grid; place-items: center;
-    color: #1a1200;
-    font-weight: 900;
-    box-shadow: 0 8px 20px rgba(242,193,78,0.35);
-    font-family: "Cairo", "Tajawal", sans-serif;
-    font-size: 20px;
-  }
-  .brand-name { font-family: "Cairo", "Tajawal", sans-serif; letter-spacing: 0.5px; }
-  .brand-en { color: var(--muted); font-weight: 500; font-size: 13px; margin-inline-start: 8px; }
+  .erp-bar{display:flex; gap:7px; padding:13px 16px; border-bottom:1px solid rgba(237,233,226,0.1);}
+  .erp-bar span{width:11px; height:11px; border-radius:50%; background:rgba(237,233,226,0.25);}
+  .erp-bar span:first-child{background:var(--coral);}
 
-  nav.top a {
-    color: var(--muted);
-    margin-inline-start: 22px;
-    font-weight: 500;
-    transition: color .2s;
+  /* ERP sliding banner (carousel) */
+  .erp-carousel{position:relative; overflow:hidden; direction:ltr; background:#14181d;}
+  .erp-track{display:none; will-change:transform; transition:transform .6s cubic-bezier(.65,.05,.36,1);}
+  html[lang="ar"] .erp-track[data-lang="ar"]{display:flex;}
+  html[lang="en"] .erp-track[data-lang="en"]{display:flex;}
+  .erp-slide{flex:0 0 100%; min-width:100%; align-self:flex-start;}
+  .erp-slide img{width:100%; display:block; vertical-align:top;}
+  .erp-nav{
+    position:absolute; top:50%; transform:translateY(-50%);
+    width:44px; height:44px; border-radius:50%; border:none; cursor:pointer;
+    background:rgba(11,14,17,0.5); color:var(--white); font-size:26px; line-height:1;
+    display:flex; align-items:center; justify-content:center; z-index:3; padding-bottom:3px;
+    backdrop-filter:blur(4px); transition:background .2s, color .2s;
   }
-  nav.top a:hover { color: var(--text); }
+  .erp-nav:hover{background:var(--coral); color:var(--black);}
+  .erp-prev{left:14px;}
+  .erp-next{right:14px;}
+  .erp-dots{position:absolute; bottom:16px; left:0; right:0; display:flex; gap:8px; justify-content:center; z-index:3;}
+  .erp-dot{width:8px; height:8px; border-radius:50%; border:none; padding:0; cursor:pointer; background:rgba(237,233,226,0.45); transition:background .25s, width .25s;}
+  .erp-dot.active{background:var(--coral); width:22px; border-radius:5px;}
+  .erp-carousel.single .erp-nav,.erp-carousel.single .erp-dots{display:none;}
 
-  /* Hero */
-  .hero {
-    padding: 80px 0 40px;
-    text-align: center;
-    position: relative;
+  .erp-sub{font-size:13px; letter-spacing:3px; color:var(--coral); margin-bottom:32px; text-transform:uppercase;}
+  html[lang="ar"] .erp-sub{letter-spacing:1px;}
+  .erp-features{
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(255px,1fr)); gap:1px;
+    background:rgba(237,233,226,0.12); border:1px solid rgba(237,233,226,0.12);
+    border-radius:20px; overflow:hidden;
   }
-  .eyebrow {
-    display: inline-block;
-    padding: 6px 14px;
-    border: 1px solid rgba(242,193,78,0.35);
-    color: var(--accent-2);
-    border-radius: 999px;
-    font-size: 13px;
-    font-weight: 700;
-    margin-bottom: 22px;
-    background: rgba(242,193,78,0.06);
+  .feat{background:#0d1014; padding:30px 28px;}
+  .feat-ic{
+    width:40px; height:40px; border-radius:11px; display:flex; align-items:center; justify-content:center;
+    background:rgba(255,75,62,0.12); color:var(--coral); margin-bottom:18px;
   }
-  .hero h1 {
-    font-family: "Cairo", "Tajawal", sans-serif;
-    font-size: clamp(34px, 5.5vw, 60px);
-    line-height: 1.15;
-    margin: 0 0 18px;
-    font-weight: 900;
-    background: linear-gradient(180deg, #ffffff 0%, #b6c2e2 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+  .feat-ic svg{width:21px; height:21px;}
+  .feat h3{font-size:17px; font-weight:600; margin-bottom:15px;}
+  .feat ul{list-style:none; display:flex; flex-direction:column; gap:10px;}
+  .feat li{
+    font-size:13.5px; line-height:1.5; color:rgba(237,233,226,0.62);
+    padding-inline-start:17px; position:relative;
   }
-  .hero p.lead {
-    max-width: 720px;
-    margin: 0 auto;
-    color: var(--muted);
-    font-size: clamp(16px, 1.6vw, 19px);
-  }
-  .hero-cta {
-    margin-top: 28px;
-    display: flex;
-    gap: 12px;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 13px 22px;
-    border-radius: 12px;
-    font-weight: 700;
-    transition: transform .15s ease, box-shadow .2s;
-    border: 1px solid transparent;
-  }
-  .btn-primary {
-    background: linear-gradient(135deg, var(--accent), #ffb347);
-    color: #1a1200;
-    box-shadow: 0 10px 25px rgba(242,193,78,0.28);
-  }
-  .btn-primary:hover { transform: translateY(-2px); }
-  .btn-ghost {
-    background: transparent;
-    border-color: rgba(255,255,255,0.12);
-    color: var(--text);
-  }
-  .btn-ghost:hover { border-color: rgba(255,255,255,0.28); }
-
-  /* Section title */
-  .section { padding: 60px 0; }
-  .section-head {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    gap: 16px;
-    margin-bottom: 32px;
-    flex-wrap: wrap;
-  }
-  .section-head h2 {
-    font-family: "Cairo", "Tajawal", sans-serif;
-    font-size: clamp(26px, 3vw, 36px);
-    margin: 0;
-    font-weight: 900;
-  }
-  .section-head p {
-    margin: 0;
-    color: var(--muted);
-    max-width: 480px;
-  }
-  .divider-accent {
-    display: inline-block;
-    width: 44px; height: 4px;
-    border-radius: 2px;
-    background: var(--accent);
-    margin-bottom: 12px;
+  .feat li::before{
+    content:""; position:absolute; inset-inline-start:0; top:7px;
+    width:5px; height:5px; border-radius:50%; background:var(--coral); opacity:.75;
   }
 
-  /* Grid */
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0,1fr));
-    gap: 26px;
-  }
-  @media (max-width: 960px) { .grid { grid-template-columns: repeat(2, minmax(0,1fr)); } }
-  @media (max-width: 640px) { .grid { grid-template-columns: 1fr; } }
-
-  /* Card */
-  .card {
-    background: linear-gradient(180deg, var(--card) 0%, var(--card-2) 100%);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    overflow: hidden;
-    box-shadow: var(--shadow-soft);
-    display: flex;
-    flex-direction: column;
-    transition: transform .25s ease, box-shadow .25s ease, border-color .25s;
-    position: relative;
-  }
-  .card:hover {
-    transform: translateY(-6px);
-    box-shadow: var(--shadow);
-    border-color: rgba(242,193,78,0.35);
-  }
-  .card-preview {
-    aspect-ratio: 16/10;
-    background: #0f1830;
-    position: relative;
-    overflow: hidden;
-    border-bottom: 1px solid var(--border);
-  }
-  .card-preview svg {
-    width: 100%; height: 100%;
-    display: block;
-    transition: transform .5s ease;
-  }
-  .card:hover .card-preview svg { transform: scale(1.03); }
-
-  .card-body {
-    padding: 22px 22px 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    flex: 1;
-  }
-  .card-tag {
-    align-self: flex-start;
-    font-size: 12px;
-    font-weight: 700;
-    padding: 4px 10px;
-    border-radius: 999px;
-    background: rgba(124,199,255,0.10);
-    color: var(--link);
-    border: 1px solid rgba(124,199,255,0.20);
-  }
-  .card h3 {
-    font-family: "Cairo", "Tajawal", sans-serif;
-    margin: 4px 0 0;
-    font-size: 22px;
-    font-weight: 900;
-  }
-  .card .en {
-    color: var(--muted);
-    font-size: 13px;
-    font-weight: 500;
-    letter-spacing: 0.4px;
-    margin-top: -2px;
-  }
-  .card p.desc {
-    color: var(--muted);
-    margin: 6px 0 0;
-    font-size: 15px;
-    line-height: 1.75;
-  }
-  .card-foot {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 16px;
-    padding-top: 16px;
-    border-top: 1px dashed rgba(255,255,255,0.08);
-  }
-  .visit {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    color: var(--accent-2);
-    font-weight: 700;
-    font-size: 15px;
-  }
-  .visit svg { width: 16px; height: 16px; }
-  .card:hover .visit { color: #fff; }
-  .site-domain {
-    color: var(--muted);
-    font-size: 13px;
-    direction: ltr;
-    font-family: "SF Mono", Menlo, monospace;
-  }
-
-  /* About */
-  .about {
-    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0));
-    border-top: 1px solid rgba(255,255,255,0.06);
-    border-bottom: 1px solid rgba(255,255,255,0.06);
-  }
-  .about-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-  }
-  @media (max-width: 800px) { .about-grid { grid-template-columns: 1fr; } }
-  .stat {
-    padding: 26px 22px;
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    text-align: center;
-  }
-  .stat .num {
-    font-family: "Cairo", "Tajawal", sans-serif;
-    font-size: 40px;
-    font-weight: 900;
-    color: var(--accent);
-    line-height: 1;
-  }
-  .stat .lbl { color: var(--muted); margin-top: 8px; font-weight: 500; }
-
-  /* CTA */
-  .cta {
-    text-align: center;
-    padding: 80px 24px;
-  }
-  .cta h2 {
-    font-family: "Cairo", "Tajawal", sans-serif;
-    font-size: clamp(28px, 3.4vw, 40px);
-    margin: 0 0 10px;
-  }
-  .cta p { color: var(--muted); margin: 0 0 22px; }
-
-  /* Footer */
-  footer.site {
-    padding: 40px 0 30px;
-    color: var(--muted);
-    font-size: 14px;
-    border-top: 1px solid rgba(255,255,255,0.06);
-  }
-  .foot-inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 12px;
-  }
-
-  /* Accessibility */
-  a:focus-visible, .btn:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 3px;
-    border-radius: 10px;
+  @media(max-width:900px){
+    nav{padding:20px 24px;}
+    .erp{padding:20px 12px 90px;}
+    .erp-inner{padding:56px 22px; border-radius:26px;}
+    .nav-links{display:none;}
+    .hero{padding:140px 24px 70px;}
+    .hero-grid{grid-template-columns:1fr;}
+    .hero-mark{display:none;}
+    .services, .work, .manifesto{padding-left:24px; padding-right:24px;}
+    .work-grid{grid-template-columns:1fr;}
+    .service-row{grid-template-columns:50px 1fr; }
+    .service-desc{grid-column:1/-1;}
+    footer{flex-direction:column; gap:10px; padding:30px 24px 50px;}
   }
 </style>
 </head>
 <body>
 
-<header class="site">
-  <div class="container site-inner">
-    <a class="brand" href="#top" aria-label="وصلة">
-      <span class="brand-mark">و</span>
-      <span>
-        <span class="brand-name">وصلة</span><span class="brand-en">WASLA</span>
-      </span>
-    </a>
-    <nav class="top" aria-label="التنقل">
-      <a href="#projects">أعمالنا</a>
-      <a href="#about">من نحن</a>
-      <a href="#contact">تواصل</a>
-    </nav>
+<nav>
+  <div class="nav-mark">
+    <svg viewBox="0 0 200 200"><g transform="translate(100,90)">
+      <rect x="-63" y="-20" width="80" height="40" rx="20" fill="none" stroke="#FF4B3E" stroke-width="14" transform="rotate(-28)"/>
+      <rect x="-17" y="-20" width="80" height="40" rx="20" fill="none" stroke="#0B0E11" stroke-width="14" transform="rotate(28)"/>
+      <circle cx="0" cy="0" r="10" fill="#EDE9E2"/>
+    </g></svg>
+    <span>WASLA</span>
   </div>
-</header>
+  <ul class="nav-links">
+    <li><a href="#services"><span data-lang="ar">خدماتنا</span><span data-lang="en">Services</span></a></li>
+    <li><a href="#work"><span data-lang="ar">أعمالنا</span><span data-lang="en">Work</span></a></li>
+    <li><a href="#about"><span data-lang="ar">من نحن</span><span data-lang="en">About</span></a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="lang-switch" id="langSwitch" type="button" aria-label="Switch language / تبديل اللغة">
+      <svg class="globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9.5"/><path d="M2.5 12h19M12 2.5c2.8 3 2.8 16 0 19M12 2.5c-2.8 3-2.8 16 0 19"/></svg>
+      <span data-lang="ar">EN</span><span data-lang="en">عربي</span>
+    </button>
+    <a class="nav-cta" href="#contact"><span data-lang="ar">ابدأ مشروعك</span><span data-lang="en">Start a project</span></a>
+  </div>
+</nav>
 
-<main id="top">
+<section class="hero">
+  <div class="hero-grid">
+    <div>
+      <span class="eyebrow"><span data-lang="ar">على مستوى الخليج · شريكك الرقمي</span><span data-lang="en">GCC-WIDE · DIGITAL PARTNER</span></span>
+      <h1>
+        <span data-lang="ar">نربط الأعمال <span class="hl">بالتقنية</span>.</span>
+        <span data-lang="en">Connecting business <span class="hl">to</span> technology.</span>
+      </h1>
+      <p class="sub">
+        <span data-lang="ar">وصلة تبني المواقع والأنظمة والتطبيقات التي تربط شركات الخليج بعملائها — هندسة نظيفة، دون تعقيد لا داعي له.</span>
+        <span data-lang="en">Wasla builds the websites, systems, and apps that link Gulf businesses to their customers — clean engineering, no unnecessary complexity.</span>
+      </p>
+      <div class="hero-cta">
+        <a class="btn-primary" href="#contact"><span data-lang="ar">احجز مكالمة</span><span data-lang="en">Book a call</span></a>
+        <a class="btn-ghost" href="#work"><span data-lang="ar">شاهد أعمالنا</span><span data-lang="en">See the work</span></a>
+      </div>
+    </div>
+    <div class="hero-mark">
+      <div class="arabic">وصلة</div>
+      <svg viewBox="0 0 200 200"><g transform="translate(100,90)">
+        <rect x="-63" y="-20" width="80" height="40" rx="20" fill="none" stroke="#FF4B3E" stroke-width="15" transform="rotate(-28)"/>
+        <rect x="-17" y="-20" width="80" height="40" rx="20" fill="none" stroke="#0B0E11" stroke-width="15" transform="rotate(28)"/>
+        <circle cx="0" cy="0" r="11" fill="#EDE9E2"/>
+      </g></svg>
+    </div>
+  </div>
+</section>
 
-  <!-- HERO -->
-  <section class="hero container">
-    <span class="eyebrow">معرض الأعمال · Portfolio</span>
-    <h1>نصنع مواقع تُوصِل علامتك التجارية بعملائها</h1>
-    <p class="lead">
-      في <strong>وصلة</strong> نصمم ونطوّر متاجر ومواقع إلكترونية بهوية بصرية مميّزة
-      وتجربة استخدام سلسة، بحيث يجد عميلك ما يبحث عنه بسهولة وثقة.
+<div class="marquee">
+  <div class="marquee-track">
+    <span><span class="dot"></span><span data-lang="ar">مواقع إلكترونية</span><span data-lang="en">WEBSITES</span></span>
+    <span><span class="dot"></span><span data-lang="ar">أنظمة ERP</span><span data-lang="en">ERP SYSTEMS</span></span>
+    <span><span class="dot"></span><span data-lang="ar">تطبيقات</span><span data-lang="en">APPS</span></span>
+    <span><span class="dot"></span><span data-lang="ar">مواقع إلكترونية</span><span data-lang="en">WEBSITES</span></span>
+    <span><span class="dot"></span><span data-lang="ar">أنظمة ERP</span><span data-lang="en">ERP SYSTEMS</span></span>
+    <span><span class="dot"></span><span data-lang="ar">تطبيقات</span><span data-lang="en">APPS</span></span>
+    <span><span class="dot"></span><span data-lang="ar">مواقع إلكترونية</span><span data-lang="en">WEBSITES</span></span>
+    <span><span class="dot"></span><span data-lang="ar">أنظمة ERP</span><span data-lang="en">ERP SYSTEMS</span></span>
+    <span><span class="dot"></span><span data-lang="ar">تطبيقات</span><span data-lang="en">APPS</span></span>
+  </div>
+</div>
+
+<section class="services" id="services">
+  <div class="section-head">
+    <h2>
+      <span data-lang="ar">ثلاث طرق نربط بها أعمالك بما هو قادم.</span>
+      <span data-lang="en">Three ways we connect your business to what's next.</span>
+    </h2>
+    <p>
+      <span data-lang="ar">كل مشروع يبدأ بما يلمسه عميلك أولاً — ثم نبني الأنظمة التي خلفه.</span>
+      <span data-lang="en">Every engagement starts with what your customer touches first — then we build the systems behind it.</span>
     </p>
-    <div class="hero-cta">
-      <a class="btn btn-primary" href="#projects">استعرض أعمالنا
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
-      </a>
-      <a class="btn btn-ghost" href="#contact">تواصل معنا</a>
-    </div>
-  </section>
-
-  <!-- PROJECTS -->
-  <section id="projects" class="section">
-    <div class="container">
-      <div class="section-head">
-        <div>
-          <span class="divider-accent"></span>
-          <h2>أعمالنا الأخيرة</h2>
-        </div>
-        <p>مجموعة مختارة من المواقع والمتاجر التي نفّذناها لعملائنا. اضغط على أي مشروع لزيارة الموقع.</p>
-      </div>
-
-      <div class="grid">
-
-        <!-- Project 1: Kimi page -->
-        <a class="card" href="https://4atlbbowd5g4c.kimi.page?sharetype=link" target="_blank" rel="noopener" aria-label="زيارة موقع المشروع الأول">
-          <div class="card-preview">
-            <svg viewBox="0 0 640 400" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0" stop-color="#1e2a4a"/>
-                  <stop offset="1" stop-color="#0d1428"/>
-                </linearGradient>
-                <linearGradient id="g1b" x1="0" y1="0" x2="1" y2="0">
-                  <stop offset="0" stop-color="#7cc7ff"/>
-                  <stop offset="1" stop-color="#a56cff"/>
-                </linearGradient>
-              </defs>
-              <rect width="640" height="400" fill="url(#g1)"/>
-              <!-- browser chrome -->
-              <rect x="0" y="0" width="640" height="34" fill="#0a0f1e"/>
-              <circle cx="18" cy="17" r="5" fill="#ff5f57"/>
-              <circle cx="36" cy="17" r="5" fill="#febc2e"/>
-              <circle cx="54" cy="17" r="5" fill="#28c840"/>
-              <rect x="90" y="8" width="460" height="18" rx="6" fill="#1a2340"/>
-              <!-- content -->
-              <circle cx="320" cy="150" r="60" fill="none" stroke="url(#g1b)" stroke-width="3" opacity="0.7"/>
-              <circle cx="320" cy="150" r="90" fill="none" stroke="url(#g1b)" stroke-width="2" opacity="0.4"/>
-              <text x="320" y="160" text-anchor="middle" fill="#eef2ff" font-family="Cairo, Tajawal, sans-serif" font-size="30" font-weight="900">Landing</text>
-              <rect x="140" y="240" width="360" height="10" rx="5" fill="#2a3a66"/>
-              <rect x="180" y="260" width="280" height="10" rx="5" fill="#22335f"/>
-              <rect x="240" y="300" width="160" height="34" rx="17" fill="url(#g1b)"/>
-              <text x="320" y="322" text-anchor="middle" fill="#0b1220" font-family="Tajawal, sans-serif" font-size="14" font-weight="700">Get Started</text>
-            </svg>
-          </div>
-          <div class="card-body">
-            <span class="card-tag">صفحة هبوط · Landing Page</span>
-            <h3>صفحة هبوط تفاعلية</h3>
-            <span class="en">Interactive Landing Page</span>
-            <p class="desc">
-              صفحة هبوط عصرية مبنية بأسلوب حديث، تركّز على تقديم رسالة واضحة ودعوة قوية لاتخاذ الإجراء،
-              مع تصميم بصري أنيق ومناسب لجميع الأجهزة.
-            </p>
-            <div class="card-foot">
-              <span class="visit">
-                زيارة الموقع
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
-              </span>
-              <span class="site-domain">kimi.page</span>
-            </div>
-          </div>
-        </a>
-
-        <!-- Project 2: Keepers Save Store -->
-        <a class="card" href="https://keeperssavestore.com/shop/" target="_blank" rel="noopener" aria-label="زيارة متجر Keepers Save Store">
-          <div class="card-preview">
-            <svg viewBox="0 0 640 400" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <linearGradient id="g2" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0" stop-color="#0f2942"/>
-                  <stop offset="1" stop-color="#0a1a2b"/>
-                </linearGradient>
-              </defs>
-              <rect width="640" height="400" fill="url(#g2)"/>
-              <rect x="0" y="0" width="640" height="34" fill="#08131f"/>
-              <circle cx="18" cy="17" r="5" fill="#ff5f57"/>
-              <circle cx="36" cy="17" r="5" fill="#febc2e"/>
-              <circle cx="54" cy="17" r="5" fill="#28c840"/>
-              <rect x="90" y="8" width="460" height="18" rx="6" fill="#132436"/>
-              <!-- top bar -->
-              <rect x="0" y="34" width="640" height="42" fill="#0c1e33"/>
-              <text x="40" y="61" fill="#7cc7ff" font-family="Cairo, sans-serif" font-size="18" font-weight="900">Keepers Save Store</text>
-              <rect x="440" y="46" width="60" height="18" rx="4" fill="#12314e"/>
-              <rect x="510" y="46" width="60" height="18" rx="4" fill="#12314e"/>
-              <!-- product grid -->
-              <g>
-                <rect x="40"  y="100" width="170" height="130" rx="10" fill="#12253b"/>
-                <rect x="230" y="100" width="170" height="130" rx="10" fill="#12253b"/>
-                <rect x="420" y="100" width="170" height="130" rx="10" fill="#12253b"/>
-                <circle cx="125" cy="160" r="30" fill="#1c3958"/>
-                <circle cx="315" cy="160" r="30" fill="#1c3958"/>
-                <circle cx="505" cy="160" r="30" fill="#1c3958"/>
-                <rect x="60"  y="205" width="130" height="8" rx="4" fill="#2a4468"/>
-                <rect x="250" y="205" width="130" height="8" rx="4" fill="#2a4468"/>
-                <rect x="440" y="205" width="130" height="8" rx="4" fill="#2a4468"/>
-
-                <rect x="40"  y="250" width="170" height="130" rx="10" fill="#12253b"/>
-                <rect x="230" y="250" width="170" height="130" rx="10" fill="#12253b"/>
-                <rect x="420" y="250" width="170" height="130" rx="10" fill="#12253b"/>
-                <circle cx="125" cy="310" r="30" fill="#1c3958"/>
-                <circle cx="315" cy="310" r="30" fill="#1c3958"/>
-                <circle cx="505" cy="310" r="30" fill="#1c3958"/>
-              </g>
-            </svg>
-          </div>
-          <div class="card-body">
-            <span class="card-tag">متجر إلكتروني · E‑commerce</span>
-            <h3>متجر Keepers Save</h3>
-            <span class="en">Keepers Save Store</span>
-            <p class="desc">
-              متجر إلكتروني متكامل يعرض تشكيلة واسعة من المنتجات بتصميم مرتّب وسهل التصفح،
-              مع تجربة شراء سلسة تدعم عمليات البحث والتصفية وإتمام الطلب بسرعة.
-            </p>
-            <div class="card-foot">
-              <span class="visit">
-                زيارة المتجر
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
-              </span>
-              <span class="site-domain">keeperssavestore.com</span>
-            </div>
-          </div>
-        </a>
-
-        <!-- Project 3: Casabilla -->
-        <a class="card" href="https://casabilla.com/" target="_blank" rel="noopener" aria-label="زيارة موقع Casabilla">
-          <div class="card-preview">
-            <svg viewBox="0 0 640 400" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <linearGradient id="g3" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0" stop-color="#f6efe4"/>
-                  <stop offset="1" stop-color="#e8dcc6"/>
-                </linearGradient>
-                <linearGradient id="g3b" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0" stop-color="#3d2a1a"/>
-                  <stop offset="1" stop-color="#1e120a"/>
-                </linearGradient>
-              </defs>
-              <rect width="640" height="400" fill="url(#g3)"/>
-              <rect x="0" y="0" width="640" height="34" fill="#c9b895"/>
-              <circle cx="18" cy="17" r="5" fill="#ff5f57"/>
-              <circle cx="36" cy="17" r="5" fill="#febc2e"/>
-              <circle cx="54" cy="17" r="5" fill="#28c840"/>
-              <rect x="90" y="8" width="460" height="18" rx="6" fill="#d8c9a5"/>
-              <!-- header -->
-              <text x="320" y="90" text-anchor="middle" fill="#3d2a1a" font-family="Cairo, serif" font-size="34" font-weight="900" letter-spacing="6">CASABILLA</text>
-              <line x1="240" y1="105" x2="400" y2="105" stroke="#a1876a" stroke-width="1.5"/>
-              <text x="320" y="130" text-anchor="middle" fill="#7a5f3f" font-family="Tajawal, sans-serif" font-size="13" letter-spacing="4">HOME · LIFESTYLE</text>
-              <!-- hero card -->
-              <rect x="60" y="160" width="240" height="200" rx="12" fill="url(#g3b)"/>
-              <text x="180" y="240" text-anchor="middle" fill="#f6efe4" font-family="Cairo, sans-serif" font-size="22" font-weight="900">أناقة</text>
-              <text x="180" y="270" text-anchor="middle" fill="#e8dcc6" font-family="Tajawal, sans-serif" font-size="13">elegant living</text>
-              <rect x="140" y="300" width="80" height="26" rx="13" fill="#f6efe4"/>
-              <text x="180" y="317" text-anchor="middle" fill="#3d2a1a" font-family="Tajawal, sans-serif" font-size="12" font-weight="700">SHOP</text>
-              <!-- side cards -->
-              <rect x="320" y="160" width="130" height="95" rx="10" fill="#d8c9a5"/>
-              <rect x="470" y="160" width="120" height="95" rx="10" fill="#c9b895"/>
-              <rect x="320" y="265" width="270" height="95" rx="10" fill="#e0d1b1"/>
-            </svg>
-          </div>
-          <div class="card-body">
-            <span class="card-tag">علامة تجارية · Lifestyle Brand</span>
-            <h3>كازابيلا</h3>
-            <span class="en">Casabilla</span>
-            <p class="desc">
-              موقع لعلامة تجارية بطابع راقٍ وهادئ، يعكس هوية بصرية دافئة تعتمد على الألوان الترابية
-              والتصوير الأنيق لتقديم منتجات المنزل ونمط الحياة بأسلوب مميّز.
-            </p>
-            <div class="card-foot">
-              <span class="visit">
-                زيارة الموقع
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
-              </span>
-              <span class="site-domain">casabilla.com</span>
-            </div>
-          </div>
-        </a>
-
-        <!-- Project 4: Sniper Shopping -->
-        <a class="card" href="https://snipershopping.com" target="_blank" rel="noopener" aria-label="زيارة موقع Sniper Shopping">
-          <div class="card-preview">
-            <svg viewBox="0 0 640 400" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <linearGradient id="g4" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0" stop-color="#111827"/>
-                  <stop offset="1" stop-color="#000000"/>
-                </linearGradient>
-                <linearGradient id="g4b" x1="0" y1="0" x2="1" y2="0">
-                  <stop offset="0" stop-color="#ff3b3b"/>
-                  <stop offset="1" stop-color="#ff8a3b"/>
-                </linearGradient>
-              </defs>
-              <rect width="640" height="400" fill="url(#g4)"/>
-              <rect x="0" y="0" width="640" height="34" fill="#000"/>
-              <circle cx="18" cy="17" r="5" fill="#ff5f57"/>
-              <circle cx="36" cy="17" r="5" fill="#febc2e"/>
-              <circle cx="54" cy="17" r="5" fill="#28c840"/>
-              <rect x="90" y="8" width="460" height="18" rx="6" fill="#111"/>
-              <!-- nav -->
-              <rect x="0" y="34" width="640" height="46" fill="#0a0f1a"/>
-              <text x="40" y="63" fill="#fff" font-family="Cairo, sans-serif" font-size="20" font-weight="900">SNIPER</text>
-              <text x="128" y="63" fill="#ff6b3b" font-family="Cairo, sans-serif" font-size="20" font-weight="900">SHOP</text>
-              <!-- hero banner -->
-              <rect x="30" y="100" width="580" height="150" rx="14" fill="#1a2436"/>
-              <circle cx="130" cy="175" r="55" fill="none" stroke="url(#g4b)" stroke-width="4"/>
-              <circle cx="130" cy="175" r="35" fill="none" stroke="url(#g4b)" stroke-width="3"/>
-              <line x1="80" y1="175" x2="180" y2="175" stroke="url(#g4b)" stroke-width="2"/>
-              <line x1="130" y1="125" x2="130" y2="225" stroke="url(#g4b)" stroke-width="2"/>
-              <text x="220" y="160" fill="#fff" font-family="Cairo, sans-serif" font-size="22" font-weight="900">HOT DEALS</text>
-              <text x="220" y="190" fill="#a4b0cf" font-family="Tajawal, sans-serif" font-size="14">أفضل العروض · Best Prices</text>
-              <rect x="220" y="205" width="100" height="30" rx="15" fill="url(#g4b)"/>
-              <text x="270" y="225" text-anchor="middle" fill="#fff" font-family="Tajawal, sans-serif" font-size="13" font-weight="800">SHOP NOW</text>
-              <!-- product row -->
-              <rect x="30"  y="270" width="140" height="110" rx="10" fill="#1a2436"/>
-              <rect x="180" y="270" width="140" height="110" rx="10" fill="#1a2436"/>
-              <rect x="330" y="270" width="140" height="110" rx="10" fill="#1a2436"/>
-              <rect x="480" y="270" width="130" height="110" rx="10" fill="#1a2436"/>
-            </svg>
-          </div>
-          <div class="card-body">
-            <span class="card-tag">متجر إلكتروني · E‑commerce</span>
-            <h3>سنايبر شوبينج</h3>
-            <span class="en">Sniper Shopping</span>
-            <p class="desc">
-              متجر إلكتروني بطابع جريء وشبابي، يعتمد على تباين لوني قوي بين الأسود والأحمر لإبراز
-              العروض والتخفيضات، مع واجهة تركّز على سرعة الوصول للمنتج والشراء.
-            </p>
-            <div class="card-foot">
-              <span class="visit">
-                زيارة المتجر
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
-              </span>
-              <span class="site-domain">snipershopping.com</span>
-            </div>
-          </div>
-        </a>
-
-        <!-- Project 5: Tartebz -->
-        <a class="card" href="https://tartebz.shop" target="_blank" rel="noopener" aria-label="زيارة متجر ترتبز">
-          <div class="card-preview">
-            <svg viewBox="0 0 640 400" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <linearGradient id="g5" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0" stop-color="#fef7f0"/>
-                  <stop offset="1" stop-color="#fbe6d0"/>
-                </linearGradient>
-                <linearGradient id="g5b" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0" stop-color="#c66a2b"/>
-                  <stop offset="1" stop-color="#a04a15"/>
-                </linearGradient>
-              </defs>
-              <rect width="640" height="400" fill="url(#g5)"/>
-              <rect x="0" y="0" width="640" height="34" fill="#f4dfc4"/>
-              <circle cx="18" cy="17" r="5" fill="#ff5f57"/>
-              <circle cx="36" cy="17" r="5" fill="#febc2e"/>
-              <circle cx="54" cy="17" r="5" fill="#28c840"/>
-              <rect x="90" y="8" width="460" height="18" rx="6" fill="#eacca4"/>
-              <!-- brand -->
-              <text x="40" y="80" fill="#7a3a10" font-family="Cairo, sans-serif" font-size="28" font-weight="900">تَرتِبز</text>
-              <text x="40" y="102" fill="#a05a25" font-family="Tajawal, sans-serif" font-size="13" letter-spacing="4">TARTEBZ.SHOP</text>
-              <rect x="520" y="60" width="80" height="34" rx="17" fill="url(#g5b)"/>
-              <text x="560" y="82" text-anchor="middle" fill="#fff" font-family="Tajawal, sans-serif" font-size="13" font-weight="700">تسوق</text>
-              <!-- hero image -->
-              <rect x="40"  y="130" width="270" height="230" rx="16" fill="url(#g5b)"/>
-              <text x="175" y="230" text-anchor="middle" fill="#fef7f0" font-family="Cairo, sans-serif" font-size="26" font-weight="900">تشكيلة</text>
-              <text x="175" y="262" text-anchor="middle" fill="#fef7f0" font-family="Cairo, sans-serif" font-size="26" font-weight="900">جديدة</text>
-              <text x="175" y="298" text-anchor="middle" fill="#fbe6d0" font-family="Tajawal, sans-serif" font-size="13">اكتشف الآن</text>
-              <!-- product grid -->
-              <rect x="330" y="130" width="130" height="110" rx="12" fill="#f4dfc4"/>
-              <circle cx="395" cy="180" r="28" fill="#eacca4"/>
-              <rect x="480" y="130" width="120" height="110" rx="12" fill="#eacca4"/>
-              <circle cx="540" cy="180" r="28" fill="#dcb587"/>
-              <rect x="330" y="250" width="270" height="110" rx="12" fill="#f4dfc4"/>
-              <rect x="350" y="270" width="70" height="70" rx="10" fill="#eacca4"/>
-              <rect x="440" y="270" width="150" height="14" rx="7" fill="#dcb587"/>
-              <rect x="440" y="295" width="120" height="10" rx="5" fill="#e8c9a0"/>
-              <rect x="440" y="325" width="80" height="20" rx="10" fill="url(#g5b)"/>
-            </svg>
-          </div>
-          <div class="card-body">
-            <span class="card-tag">متجر إلكتروني · E‑commerce</span>
-            <h3>ترتبز</h3>
-            <span class="en">Tartebz Shop</span>
-            <p class="desc">
-              متجر إلكتروني بهوية عربية دافئة، يجمع بين البساطة والذوق الرفيع لعرض المنتجات
-              بطريقة جذّابة، مع تجربة تسوّق سهلة تناسب الزائر العربي على جميع الأجهزة.
-            </p>
-            <div class="card-foot">
-              <span class="visit">
-                زيارة المتجر
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
-              </span>
-              <span class="site-domain">tartebz.shop</span>
-            </div>
-          </div>
-        </a>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section id="about" class="section about">
-    <div class="container">
-      <div class="section-head">
-        <div>
-          <span class="divider-accent"></span>
-          <h2>من نحن</h2>
-        </div>
-        <p>وصلة فريق متخصّص في تصميم وتطوير المواقع والمتاجر الإلكترونية، نؤمن بأن الموقع الجيّد هو الجسر بين العميل والعلامة التجارية.</p>
-      </div>
-
-      <div class="about-grid">
-        <div class="stat">
-          <div class="num">+5</div>
-          <div class="lbl">مشاريع منجزة</div>
-        </div>
-        <div class="stat">
-          <div class="num">100٪</div>
-          <div class="lbl">التزام بالجودة</div>
-        </div>
-        <div class="stat">
-          <div class="num">24/7</div>
-          <div class="lbl">دعم ومتابعة</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section id="contact" class="cta container">
-    <span class="divider-accent"></span>
-    <h2>عندك فكرة مشروع؟ خلّينا نبدأ سوا</h2>
-    <p>تواصل معنا لنساعدك في بناء موقعك أو متجرك الإلكتروني بأفضل شكل ممكن.</p>
-    <div class="hero-cta">
-      <a class="btn btn-primary" href="mailto:hello@wasla.example">راسلنا الآن</a>
-      <a class="btn btn-ghost" href="#projects">شاهد الأعمال</a>
-    </div>
-  </section>
-
-</main>
-
-<footer class="site">
-  <div class="container foot-inner">
-    <div>© <span id="yr"></span> <strong>وصلة · WASLA</strong> — جميع الحقوق محفوظة</div>
-    <div>صُنِع بـ ♥ للعملاء المميّزين</div>
   </div>
+  <div class="service-list">
+    <div class="service-row">
+      <div class="service-num">01</div>
+      <div class="service-title">
+        <span data-lang="ar">مواقع <span class="accent">إلكترونية</span></span>
+        <span data-lang="en">Web<span class="accent">sites</span></span>
+      </div>
+      <div class="service-desc">
+        <span data-lang="ar">مواقع سريعة، ثنائية اللغة، مبنية لرفع التحويلات — من متاجر إلكترونية إلى مواقع الشركات.</span>
+        <span data-lang="en">Fast, bilingual, conversion-built sites — from e-commerce storefronts to corporate presences.</span>
+      </div>
+    </div>
+    <div class="service-row erp-trigger" id="erpTrigger" role="button" tabindex="0" aria-expanded="false" aria-controls="erp">
+      <div class="service-num">02</div>
+      <div class="service-title">
+        <span class="service-title-main">
+          <span data-lang="ar">نظام <span class="accent">ERP</span></span>
+          <span data-lang="en">ERP <span class="accent">system</span></span>
+        </span>
+        <span class="erp-hint">
+          <span data-lang="ar">استعرض النظام</span><span data-lang="en">Explore the system</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg>
+        </span>
+      </div>
+      <div class="service-desc">
+        <span data-lang="ar">نظام ERP (اختصار لـ Enterprise Resource Planning) أو «تخطيط موارد المؤسسة» هو برنامج متكامل لإدارة العمليات التجارية. يربط النظام جميع أقسام الشركة (كالمحاسبة، والموارد البشرية، والمبيعات، والمخزون) في قاعدة بيانات موحدة؛ مما يسهّل تدفق المعلومات، ويقلل الأخطاء اليدوية، ويُسرّع اتخاذ القرارات بناءً على تقارير دقيقة.</span>
+        <span data-lang="en">An ERP (Enterprise Resource Planning) system is integrated software for running your operations. It links every department — accounting, HR, sales, and inventory — into one unified database, so information flows freely, manual errors drop, and decisions are made faster on accurate reports.</span>
+      </div>
+    </div>
+    <div class="service-row">
+      <div class="service-num">03</div>
+      <div class="service-title">
+        <span data-lang="ar">تطبيقات <span class="accent">مخصصة</span></span>
+        <span data-lang="en">Custom <span class="accent">apps</span></span>
+      </div>
+      <div class="service-desc">
+        <span data-lang="ar">تطبيقات جوال وويب مبنية حول مهمة واحدة — تُنجز بإتقان، وتُطلق بسرعة، وسهلة الصيانة.</span>
+        <span data-lang="en">Mobile and web apps built around one job — done well, shipped fast, easy to maintain.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="work" id="work">
+  <div class="section-head">
+    <h2>
+      <span data-lang="ar">نبذة عن بعض أعمالنا</span>
+      <span data-lang="en">A look at some of our work</span>
+    </h2>
+    <p>
+      <span data-lang="ar">لمحة عن بعض الوصلات التي بنيناها.</span>
+      <span data-lang="en">A brief look at a few of the links we've built.</span>
+    </p>
+  </div>
+  <div class="work-grid">
+    <a class="work-card" href="https://tartebz.shop/" target="_blank" rel="noopener">
+      <div class="work-thumb"><img src="images/ترتيبز.png" alt="ترتيبز للحلويات" loading="lazy"></div>
+      <div class="work-body">
+        <span class="tag"><span data-lang="ar">حلويات · تجارة إلكترونية</span><span data-lang="en">SWEETS · E-COMMERCE</span></span>
+        <h3><span data-lang="ar">ترتيبز للحلويات</span><span data-lang="en">Tartebz Sweets</span></h3>
+        <p><span data-lang="ar">متجر حلويات كامل بهوية مرحة وتجربة شراء سلسة.</span><span data-lang="en">A full sweets store with a playful identity and smooth checkout.</span></p>
+        <span class="arrow">↗</span>
+      </div>
+    </a>
+    <a class="work-card" href="https://4atlbbowd5g4c.kimi.page/?sharetype=link" target="_blank" rel="noopener">
+      <div class="work-thumb"><img src="images/nurseen.png" alt="نورسين للعبايات" loading="lazy"></div>
+      <div class="work-body">
+        <span class="tag"><span data-lang="ar">أزياء · عبايات</span><span data-lang="en">FASHION · ABAYAS</span></span>
+        <h3><span data-lang="ar">نورسين للعبايات</span><span data-lang="en">Nurseen</span></h3>
+        <p><span data-lang="ar">متجر عبايات أنيق يجمع الأصالة بلمسة عصرية راقية.</span><span data-lang="en">An elegant abaya store blending tradition with a modern, refined touch.</span></p>
+        <span class="arrow">↗</span>
+      </div>
+    </a>
+    <a class="work-card" href="https://keeperssavestore.com/shop/" target="_blank" rel="noopener">
+      <div class="work-thumb"><img src="images/keepers%20save%20sport.png" alt="Keepers Save Sport" loading="lazy"></div>
+      <div class="work-body">
+        <span class="tag"><span data-lang="ar">رياضة · تجارة إلكترونية</span><span data-lang="en">SPORTS · E-COMMERCE</span></span>
+        <h3><span data-lang="ar">Keepers Save Sport</span><span data-lang="en">Keepers Save Sport</span></h3>
+        <p><span data-lang="ar">متجر رياضي متخصص بمعدات حراس المرمى والإكسسوارات.</span><span data-lang="en">A specialist sports store for goalkeeper gear and accessories.</span></p>
+        <span class="arrow">↗</span>
+      </div>
+    </a>
+    <a class="work-card" href="https://casabilla.com/" target="_blank" rel="noopener">
+      <div class="work-thumb"><img src="images/Casabilla.png" alt="كازابيلا العقارية" loading="lazy"></div>
+      <div class="work-body">
+        <span class="tag"><span data-lang="ar">عقارات</span><span data-lang="en">REAL ESTATE</span></span>
+        <h3><span data-lang="ar">كازابيلا العقارية</span><span data-lang="en">Casabilla Real Estate</span></h3>
+        <p><span data-lang="ar">منصة عقارية لعرض وإدارة العقارات في البحرين.</span><span data-lang="en">A real-estate platform for listing and managing properties in Bahrain.</span></p>
+        <span class="arrow">↗</span>
+      </div>
+    </a>
+    <a class="work-card" href="https://snipershopping.com/" target="_blank" rel="noopener">
+      <div class="work-thumb"><img src="images/sniper2.png" alt="سنابير" loading="lazy"></div>
+      <div class="work-body">
+        <span class="tag"><span data-lang="ar">ملابس · تجارة إلكترونية</span><span data-lang="en">APPAREL · E-COMMERCE</span></span>
+        <h3><span data-lang="ar">سنابير</span><span data-lang="en">Sniper</span></h3>
+        <p><span data-lang="ar">متجر ملابس بعروض مميزة وتجربة شراء سريعة.</span><span data-lang="en">An apparel store with standout offers and a fast buying experience.</span></p>
+        <span class="arrow">↗</span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<section class="erp" id="erp">
+  <div class="erp-inner">
+    <div class="erp-head">
+      <span class="eyebrow"><span data-lang="ar">منتج من وصلة</span><span data-lang="en">A WASLA PRODUCT</span></span>
+      <h2>
+        <span data-lang="ar">نظام <span class="accent">وصلة ERP</span> لإدارة الأعمال</span>
+        <span data-lang="en">Wasla <span class="accent">ERP</span> Management System</span>
+      </h2>
+      <p class="erp-lead">
+        <span data-lang="ar">نظام متكامل يعمل عبر الويب، صُمّم لإدارة العمليات اليومية من لوحة تحكم واحدة سهلة الاستخدام — يوحّد المبيعات والمخزون والموظفين والحسابات وإدارة الفروع، مع رؤى فورية لأعمالك في كل خطوة.</span>
+        <span data-lang="en">A comprehensive web-based ERP built to run daily operations from a single, intuitive dashboard — streamlining sales, inventory, employees, accounting, and multi-branch operations, with real-time business insight at every step.</span>
+      </p>
+    </div>
+
+    <div class="erp-shots">
+      <div class="erp-shot erp-banner">
+        <div class="erp-bar"><span></span><span></span><span></span></div>
+        <div class="erp-carousel">
+          <div class="erp-track" data-lang="ar">
+            <div class="erp-slide"><img src="images/erp-dashboard-ar.jpg" alt="لوحة تحكم نظام وصلة ERP" loading="lazy"></div>
+            <div class="erp-slide"><img src="images/erp-attendance-ar.png" alt="حضور الكاشير في نظام وصلة ERP" loading="lazy"></div>
+          </div>
+          <div class="erp-track" data-lang="en">
+            <div class="erp-slide"><img src="images/erp-dashboard-en.png" alt="Wasla ERP dashboard" loading="lazy"></div>
+            <div class="erp-slide"><img src="images/erp-attendance-en.png" alt="Cashier attendance in Wasla ERP" loading="lazy"></div>
+          </div>
+          <button class="erp-nav erp-prev" type="button" aria-label="Previous">&#8249;</button>
+          <button class="erp-nav erp-next" type="button" aria-label="Next">&#8250;</button>
+          <div class="erp-dots"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="erp-sub">
+      <span data-lang="ar">الميزات الرئيسية</span><span data-lang="en">KEY FEATURES</span>
+    </div>
+
+    <div class="erp-features">
+      <div class="feat">
+        <div class="feat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></div>
+        <h3><span data-lang="ar">لوحة تحكم تفاعلية</span><span data-lang="en">Interactive Dashboard</span></h3>
+        <ul>
+          <li><span data-lang="ar">مؤشرات أداء وتحليلات فورية</span><span data-lang="en">Real-time KPIs &amp; analytics</span></li>
+          <li><span data-lang="ar">رسوم بيانية لأداء المبيعات</span><span data-lang="en">Sales performance charts</span></li>
+          <li><span data-lang="ar">تتبّع الإيرادات والأرباح</span><span data-lang="en">Revenue &amp; profit tracking</span></li>
+          <li><span data-lang="ar">تنبيهات المخزون المنخفض</span><span data-lang="en">Low-stock alerts</span></li>
+          <li><span data-lang="ar">المنتجات الأكثر مبيعاً</span><span data-lang="en">Top-selling products</span></li>
+          <li><span data-lang="ar">مقارنة أداء الفروع</span><span data-lang="en">Branch performance comparison</span></li>
+        </ul>
+      </div>
+      <div class="feat">
+        <div class="feat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="9" cy="20" r="1.4"/><circle cx="17" cy="20" r="1.4"/><path d="M3 4h2.2l2 11.2a1 1 0 0 0 1 .8h8.4a1 1 0 0 0 1-.8L20.2 8H6"/></svg></div>
+        <h3><span data-lang="ar">نقطة البيع (POS)</span><span data-lang="en">Point of Sale (POS)</span></h3>
+        <ul>
+          <li><span data-lang="ar">دفع سريع وسلس</span><span data-lang="en">Fast, responsive checkout</span></li>
+          <li><span data-lang="ar">طرق دفع متعددة</span><span data-lang="en">Multiple payment methods</span></li>
+          <li><span data-lang="ar">دعم الخصومات والعروض</span><span data-lang="en">Discounts &amp; promotions</span></li>
+          <li><span data-lang="ar">إصدار الإيصالات</span><span data-lang="en">Receipt generation</span></li>
+          <li><span data-lang="ar">سجل المبيعات</span><span data-lang="en">Sales history</span></li>
+        </ul>
+      </div>
+      <div class="feat">
+        <div class="feat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 8.3l-9-5-9 5v7.4l9 5 9-5V8.3z"/><path d="M3 8.3l9 5 9-5M12 13.3V21"/></svg></div>
+        <h3><span data-lang="ar">إدارة المخزون</span><span data-lang="en">Inventory Management</span></h3>
+        <ul>
+          <li><span data-lang="ar">إدارة المنتجات والأصناف</span><span data-lang="en">Products &amp; categories</span></li>
+          <li><span data-lang="ar">تتبّع حركة المخزون</span><span data-lang="en">Stock movement tracking</span></li>
+          <li><span data-lang="ar">تحويلات المخزون بين الفروع</span><span data-lang="en">Inter-branch transfers</span></li>
+          <li><span data-lang="ar">إدارة المشتريات</span><span data-lang="en">Purchase management</span></li>
+          <li><span data-lang="ar">إشعارات نقص المخزون</span><span data-lang="en">Low-inventory notifications</span></li>
+        </ul>
+      </div>
+      <div class="feat">
+        <div class="feat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="9" width="8" height="12" rx="1"/><rect x="13" y="3" width="8" height="18" rx="1"/><path d="M6.5 13h1M6.5 17h1M16.5 7h1M16.5 11h1M16.5 15h1"/></svg></div>
+        <h3><span data-lang="ar">إدارة متعددة الفروع</span><span data-lang="en">Multi-Branch Management</span></h3>
+        <ul>
+          <li><span data-lang="ar">إدارة مركزية لعدة فروع</span><span data-lang="en">Centralized control</span></li>
+          <li><span data-lang="ar">تقارير مبيعات لكل فرع</span><span data-lang="en">Branch-specific reports</span></li>
+          <li><span data-lang="ar">مزامنة المخزون</span><span data-lang="en">Inventory synchronization</span></li>
+          <li><span data-lang="ar">توزيع الموظفين على الفروع</span><span data-lang="en">Staff assignment per branch</span></li>
+        </ul>
+      </div>
+      <div class="feat">
+        <div class="feat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="8" r="3.6"/><path d="M5 20c0-3.6 3.1-5.6 7-5.6s7 2 7 5.6"/></svg></div>
+        <h3><span data-lang="ar">إدارة الموظفين</span><span data-lang="en">Employee Management</span></h3>
+        <ul>
+          <li><span data-lang="ar">سجلات الموظفين</span><span data-lang="en">Employee records</span></li>
+          <li><span data-lang="ar">تتبّع الحضور</span><span data-lang="en">Attendance tracking</span></li>
+          <li><span data-lang="ar">إدارة الورديات</span><span data-lang="en">Shift management</span></li>
+          <li><span data-lang="ar">متابعة الأداء</span><span data-lang="en">Performance monitoring</span></li>
+          <li><span data-lang="ar">إدارة العمولات</span><span data-lang="en">Commission management</span></li>
+        </ul>
+      </div>
+      <div class="feat">
+        <div class="feat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 21h18"/><rect x="5" y="11" width="3.2" height="8" rx="1"/><rect x="10.4" y="6" width="3.2" height="13" rx="1"/><rect x="15.8" y="14" width="3.2" height="5" rx="1"/></svg></div>
+        <h3><span data-lang="ar">التقارير المالية والمبيعات</span><span data-lang="en">Sales &amp; Financial Reports</span></h3>
+        <ul>
+          <li><span data-lang="ar">تقارير يومية وأسبوعية وشهرية وسنوية</span><span data-lang="en">Daily to yearly reports</span></li>
+          <li><span data-lang="ar">المبيعات حسب الفرع</span><span data-lang="en">Sales by branch</span></li>
+          <li><span data-lang="ar">المبيعات حسب طريقة الدفع</span><span data-lang="en">Sales by payment method</span></li>
+          <li><span data-lang="ar">تحليلات العملاء</span><span data-lang="en">Customer analytics</span></li>
+          <li><span data-lang="ar">تقارير الأرباح والمصروفات</span><span data-lang="en">Profit &amp; expense reports</span></li>
+          <li><span data-lang="ar">احتساب ضريبة القيمة المضافة</span><span data-lang="en">VAT calculations</span></li>
+        </ul>
+      </div>
+      <div class="feat">
+        <div class="feat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="8.5" cy="9" r="3"/><path d="M3 19c0-3 2.5-4.6 5.5-4.6S14 16 14 19"/><path d="M16 6.2a3 3 0 0 1 0 5.6M21 19c0-2.4-1.6-3.9-3.8-4.4"/></svg></div>
+        <h3><span data-lang="ar">العملاء والموردون</span><span data-lang="en">Customers &amp; Suppliers</span></h3>
+        <ul>
+          <li><span data-lang="ar">قاعدة بيانات العملاء</span><span data-lang="en">Customer database</span></li>
+          <li><span data-lang="ar">إدارة الموردين</span><span data-lang="en">Supplier management</span></li>
+          <li><span data-lang="ar">سجل المشتريات</span><span data-lang="en">Purchase history</span></li>
+          <li><span data-lang="ar">المدفوعات المستحقة</span><span data-lang="en">Outstanding payments</span></li>
+          <li><span data-lang="ar">سجل معاملات العملاء</span><span data-lang="en">Transaction history</span></li>
+        </ul>
+      </div>
+      <div class="feat">
+        <div class="feat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M6 2.5h12v19l-3-1.8-3 1.8-3-1.8-3 1.8v-19z"/><path d="M9 7.5h6M9 11.5h6M9 15.5h4"/></svg></div>
+        <h3><span data-lang="ar">المحاسبة</span><span data-lang="en">Accounting</span></h3>
+        <ul>
+          <li><span data-lang="ar">إدارة المصروفات</span><span data-lang="en">Expense management</span></li>
+          <li><span data-lang="ar">إصدار الفواتير</span><span data-lang="en">Invoice generation</span></li>
+          <li><span data-lang="ar">تتبّع المدفوعات</span><span data-lang="en">Payment tracking</span></li>
+          <li><span data-lang="ar">ملخصات مالية</span><span data-lang="en">Financial summaries</span></li>
+          <li><span data-lang="ar">تقارير ضريبة القيمة المضافة</span><span data-lang="en">VAT reporting</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="manifesto" id="about">
+  <p data-lang="ar">الـ<span class="arabic">وصلة</span> هي القطعة التي تجمع شيئين وتجعلهما يعملان كواحد. هذا كل ما نبنيه.</p>
+  <p data-lang="en">A <span class="arabic">وصلة</span> is the piece that joins two things and lets them work as one. That's the only thing we build.</p>
+</section>
+
+<section class="contact" id="contact">
+  <h2><span data-lang="ar">لنتواصل.</span><span data-lang="en">Let's connect.</span></h2>
+  <p>
+    <span data-lang="ar">أخبرنا بما يحتاجه عملك ليعمل — وسنبني الوصلة.</span>
+    <span data-lang="en">Tell us what your business needs to run on — we'll build the link.</span>
+  </p>
+  <div class="contact-actions">
+    <a class="contact-btn contact-wa" href="https://wa.me/97333644877" target="_blank" rel="noopener">
+      <img class="wa-ic" src="images/whatsapp.png" alt="WhatsApp">
+      <span data-lang="ar">تواصل عبر واتساب</span><span data-lang="en">Chat on WhatsApp</span>
+    </a>
+  </div>
+</section>
+
+<footer>
+  <span>© 2026 <span data-lang="ar">وصلة</span><span data-lang="en">WASLA</span></span>
+  <span><span data-lang="ar">المنامة، البحرين</span><span data-lang="en">MANAMA, BAHRAIN</span></span>
 </footer>
 
 <script>
-  document.getElementById('yr').textContent = new Date().getFullYear();
+  (function(){
+    var htmlEl = document.documentElement;
+    var btn = document.getElementById('langSwitch');
+    var erpRender = null;
+
+    function setLang(lang){
+      htmlEl.setAttribute('lang', lang);
+      htmlEl.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+      document.title = lang === 'ar'
+        ? 'وصلة — نربط الأعمال بالتقنية'
+        : 'Wasla — Connecting Business to Technology';
+      if(erpRender){ erpRender(); }
+    }
+
+    var trigger = document.getElementById('erpTrigger');
+    var erp = document.getElementById('erp');
+    function toggleErp(){
+      var open = erp.classList.toggle('open');
+      trigger.classList.toggle('active', open);
+      trigger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      if(open){
+        requestAnimationFrame(function(){ erp.scrollIntoView({behavior:'smooth', block:'start'}); });
+      }
+    }
+    trigger.addEventListener('click', toggleErp);
+    trigger.addEventListener('keydown', function(e){
+      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); toggleErp(); }
+    });
+
+    var carousel = document.querySelector('.erp-carousel');
+    if(carousel){
+      var dotsWrap = carousel.querySelector('.erp-dots');
+      var idx = 0, timer = null;
+      function activeTrack(){ return carousel.querySelector('.erp-track[data-lang="' + htmlEl.getAttribute('lang') + '"]'); }
+      function imgOk(im){ return im && !im.dataset.broken && !(im.complete && im.naturalWidth === 0); }
+      function visibleSlides(track){
+        var out = [];
+        Array.prototype.forEach.call(track.querySelectorAll('.erp-slide'), function(s){
+          var ok = imgOk(s.querySelector('img'));
+          s.style.display = ok ? '' : 'none';
+          if(ok){ out.push(s); }
+        });
+        return out;
+      }
+      function render(){
+        var track = activeTrack();
+        if(!track){ return; }
+        var slides = visibleSlides(track);
+        if(idx >= slides.length){ idx = 0; }
+        track.style.transform = 'translateX(' + (-idx * 100) + '%)';
+        carousel.classList.toggle('single', slides.length <= 1);
+        dotsWrap.innerHTML = '';
+        slides.forEach(function(_, i){
+          var d = document.createElement('button');
+          d.type = 'button';
+          d.className = 'erp-dot' + (i === idx ? ' active' : '');
+          d.addEventListener('click', function(){ idx = i; render(); restart(); });
+          dotsWrap.appendChild(d);
+        });
+      }
+      function count(){ var t = activeTrack(); return t ? visibleSlides(t).length : 0; }
+      function step(dir){ var c = count(); if(c){ idx = (idx + dir + c) % c; render(); } }
+      function restart(){ if(timer){ clearInterval(timer); } timer = setInterval(function(){ step(1); }, 4500); }
+      carousel.querySelector('.erp-next').addEventListener('click', function(){ step(1); restart(); });
+      carousel.querySelector('.erp-prev').addEventListener('click', function(){ step(-1); restart(); });
+      Array.prototype.forEach.call(carousel.querySelectorAll('.erp-track img'), function(im){
+        im.addEventListener('error', function(){ im.dataset.broken = '1'; render(); });
+        im.addEventListener('load', render);
+      });
+      erpRender = function(){ idx = 0; render(); restart(); };
+    }
+
+    setLang('ar');
+    btn.addEventListener('click', function(){
+      setLang(htmlEl.getAttribute('lang') === 'ar' ? 'en' : 'ar');
+    });
+  })();
 </script>
 
 </body>
